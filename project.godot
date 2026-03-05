@@ -113,7 +113,7 @@ debug={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://scripts/dialogue/dev_03_intro.dialogue", "res://scripts/dialogue/dev_wall.dialogue")
+locale/translations_pot_files=PackedStringArray("res://script/dialogue/dev_03_intro.dialogue", "res://script/dialogue/dev_wall.dialogue")
 
 [layer_names]
 

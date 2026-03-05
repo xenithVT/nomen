@@ -140,8 +140,12 @@ func apply_dialogue_line() -> void:
 		portrait.texture = load(portrait_path)
 		print_debug("portrait texture found")
 		print_debug(portrait_path)
+	elif FileAccess.file_exists("res://art/portrait/portrait_anima.png"):
+		portrait.texture = load("res://art/portrait/portrait_anima.png")
+		print_debug("portrait texture default")
+		print_debug(portrait_path)
 	else:
-		portrait.texture = load("res://art/portrait/portrait_anima_idle.png")
+		portrait.texture = null
 		print_debug("portrait texture null")
 		print_debug(portrait_path)
 

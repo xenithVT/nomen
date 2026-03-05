@@ -1,22 +1,23 @@
 [gd_scene format=3 uid="uid://tcq2d4qx4rm0"]
 
-[ext_resource type="Script" uid="uid://bx00gbwuiaoxc" path="res://nodes/dialogueballoon.gd" id="1_s2gbs"]
+[ext_resource type="Script" uid="uid://bx00gbwuiaoxc" path="res://node/dialogueballoon.gd" id="1_s2gbs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
+[ext_resource type="Texture2D" uid="uid://rhktm4bld6o0" path="res://art/menu/icon_select.png" id="2_pl4v6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_1j1j0"]
 [ext_resource type="FontFile" uid="uid://pt38168qk38f" path="res://art/font/ByteBounce.ttf" id="3_icwbi"]
-[ext_resource type="Texture2D" uid="uid://c1djlrmduxa1s" path="res://art/portrait/portrait_anima_idle.png" id="3_rcvl1"]
+[ext_resource type="Texture2D" uid="uid://rogsefbbm7by" path="res://art/portrait/portrait_anima.png" id="3_wsy0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
 content_margin_bottom = 3.0
-bg_color = Color(0.15686275, 0, 0.16470589, 1)
+bg_color = Color(0.15686275, 0, 0.16470589, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.345098, 0.345098, 0.345098, 1)
+border_color = Color(0.34509805, 0.34509805, 0.34509805, 0)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -27,36 +28,36 @@ content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
 content_margin_bottom = 3.0
-bg_color = Color(0.22352941, 0, 0.23529412, 1)
+bg_color = Color(0.22352941, 0, 0.23529412, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.14117648, 0, 0.19215687, 1)
+border_color = Color(0.14117648, 0, 0.19215687, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcbqo"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
 content_margin_bottom = 3.0
-bg_color = Color(0.22373459, 4.5688117e-05, 0.23404983, 1)
+bg_color = Color(0.22352941, 0, 0.23529412, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.14015481, 8.409646e-05, 0.19174817, 1)
+border_color = Color(0.14117648, 0, 0.19215687, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6i7a"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
 content_margin_bottom = 3.0
-bg_color = Color(0.15686275, 0, 0.16470589, 1)
+bg_color = Color(0.15686275, 0, 0.16470589, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.078431375, 0, 0.11372549, 1)
+border_color = Color(0.078431375, 0, 0.11372549, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6nbm"]
 bg_color = Color(0.15686275, 0, 0.16470589, 1)
@@ -69,6 +70,15 @@ border_color = Color(0.078431375, 0, 0.11372549, 1)
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font = ExtResource("3_icwbi")
 default_font_size = 16
+Button/colors/font_color = Color(0.63784295, 0.6378433, 0.6378428, 1)
+Button/colors/font_disabled_color = Color(0.34781685, 0.34781697, 0.3478169, 0.5019608)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/icons/icon = ExtResource("2_pl4v6")
 Button/styles/disabled = SubResource("StyleBoxFlat_235ry")
 Button/styles/focus = SubResource("StyleBoxFlat_ufjut")
 Button/styles/hover = SubResource("StyleBoxFlat_fcbqo")
@@ -152,7 +162,7 @@ mouse_behavior_recursive = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("3_rcvl1")
+texture = ExtResource("3_wsy0x")
 
 [node name="Label" type="Label" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=765546512]
 layout_mode = 2
@@ -208,29 +218,34 @@ polygon = PackedVector2Array(0, 0, 2.5, 3, 5, 0)
 libraries/ = SubResource("AnimationLibrary_6b6c8")
 autoplay = &"progress"
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=1112918312]
+[node name="ResponsesMenu" type="HBoxContainer" parent="Balloon" unique_id=1144137769]
 unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.9250001
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -29.5
-offset_right = 60.0
-offset_bottom = 29.5
+anchor_bottom = 0.9250001
+offset_left = -127.0
+offset_top = -43.00003
+offset_right = 153.0
+offset_bottom = 15.9999695
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_vertical = 8
 mouse_filter = 2
 mouse_behavior_recursive = 1
 theme_override_constants/separation = 2
-alignment = 2
 script = ExtResource("3_1j1j0")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=662487967]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+text = "response example"
+
+[node name="ResponseExample2" type="Button" parent="Balloon/ResponsesMenu" unique_id=1106570028]
 layout_mode = 2
 mouse_filter = 2
 mouse_behavior_recursive = 1

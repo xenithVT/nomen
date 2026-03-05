@@ -59,6 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		interact_target.interact()
 	else:
 		print_debug("interaction failed")
+	if event.is_action_pressed("ui_cancel") and Gamestate.in_dialogue:
+		DialogueManager.dialogue_ended
+
 # ---------------
 
 

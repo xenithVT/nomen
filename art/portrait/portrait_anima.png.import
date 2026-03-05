@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1djlrmduxa1s"
-path="res://.godot/imported/portrait_anima_idle.png-4dcc3d4c4cc94f7f7344ad59471ee9a3.ctex"
+uid="uid://rogsefbbm7by"
+path="res://.godot/imported/portrait_anima.png-25878a2bdc3d691293f0e61ebe8ecb86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/portrait/portrait_anima_idle.png"
-dest_files=["res://.godot/imported/portrait_anima_idle.png-4dcc3d4c4cc94f7f7344ad59471ee9a3.ctex"]
+source_file="res://art/portrait/portrait_anima.png"
+dest_files=["res://.godot/imported/portrait_anima.png-25878a2bdc3d691293f0e61ebe8ecb86.ctex"]
 
 [params]
 
