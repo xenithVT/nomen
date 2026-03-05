@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_1j1j0"]
 [ext_resource type="FontFile" uid="uid://pt38168qk38f" path="res://art/font/ByteBounce.ttf" id="3_icwbi"]
-[ext_resource type="Texture2D" uid="uid://dsx80rirjf50q" path="res://art/sprite/character/sprite_ph_nv.png" id="3_rcvl1"]
+[ext_resource type="Texture2D" uid="uid://c1djlrmduxa1s" path="res://art/portrait/portrait_anima_idle.png" id="3_rcvl1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
 content_margin_left = 6.0
@@ -127,9 +127,9 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 mouse_behavior_recursive = 1
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 128
 theme_override_constants/margin_bottom = 24
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=1815911594]
