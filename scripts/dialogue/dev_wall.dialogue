@@ -1,0 +1,4 @@
+~ start
+... : it's just a wall.
+set Gamestate.in_dialogue = false
+=> END

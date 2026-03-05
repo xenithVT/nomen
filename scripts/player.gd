@@ -1,37 +1,87 @@
 extends CharacterBody2D
 
-const speed = 75
+# variables
+const speed: float = 75
+const rotate_speed: float = 10
 var direction: Vector2 = Vector2.ZERO
 var current_direction = "none"
+var last_direction := Vector2.DOWN
+var debug_shown = false
+@onready var interact_area = $pivot/area_interact_player
+@onready var pivot = $pivot
+var target_angle: float
+var interact_target = null
+# ---------------
 
+
+# start functions
 func _ready():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+# ---------------
 
-func _physics_process(_delta):
+# process functions
+func _process(_delta):
 	player_movement(_delta)
 	debug()
 
+func _physics_process(delta: float) -> void:
+	move_and_slide()
+# ---------------
+
+# debug
 func debug():
 	if Input.is_action_just_pressed("debug") and Gamestate.debug_array != []:
 		print_debug(Gamestate.debug_array)
 	elif Input.is_action_just_pressed("debug") and Gamestate.debug_array == []:
 		print_debug("no debug flags present")
+	
+	if Input.is_action_just_pressed("debug") and debug_shown == false:
+		$hitbox_player/shape_hitbox_player/debug_hitbox.show()
+		$pivot/area_interact_player/shape_interact_player/debug_interact_hitbox.show()
+		debug_shown = true
+	elif Input.is_action_just_pressed("debug") and debug_shown == true:
+		$hitbox_player/shape_hitbox_player/debug_hitbox.hide()
+		$pivot/area_interact_player/shape_interact_player/debug_interact_hitbox.hide()
+		debug_shown = false
+# ---------------
 
+
+# interaction
+func _on_area_interact_player_area_entered(area: Area2D) -> void:
+	interact_target = area
+	print_debug(area)
+func _on_area_interact_player_area_exited(area: Area2D) -> void:
+	if interact_target == area:
+		interact_target = null
+		print_debug(area)
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and interact_target != null and !Gamestate.in_dialogue:
+		interact_target.interact()
+	else:
+		print_debug("interaction failed")
+# ---------------
+
+
+# player movement
 func player_movement(_delta):
 	if Gamestate.in_dialogue == false:
 		direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") 
 		direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up") 
 	elif Gamestate.in_dialogue == true:
 		pass
-	
 	velocity = direction * speed
-	
-	move_and_slide()
-	pass
+
+	if direction != Vector2.ZERO:
+		last_direction = direction
+		pivot.rotation = direction.angle()
+	else:
+		pivot.rotation = last_direction.angle()
+# ---------------
+
 
 func play_anim(movement):
 	var anim = $AnimatedSprite2D
 	
 	if current_direction == "right":
 		anim.flip_h = false
-		
+# ---------------

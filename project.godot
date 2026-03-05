@@ -29,8 +29,8 @@ runtime/balloon_path="res://nodes/dialogueballoon.tscn"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
@@ -113,7 +113,11 @@ debug={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://scripts/dialogue/dev_03_intro.dialogue")
+locale/translations_pot_files=PackedStringArray("res://scripts/dialogue/dev_03_intro.dialogue", "res://scripts/dialogue/dev_wall.dialogue")
+
+[layer_names]
+
+2d_physics/layer_3="interact"
 
 [physics]
 

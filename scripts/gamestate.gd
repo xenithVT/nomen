@@ -1,9 +1,9 @@
 extends Node
 
 # game start stuff
-func start():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#func start():
+#	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # global variables
 var current_route = "neutral"
