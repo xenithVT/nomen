@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://css518vob80nl"]
+
+[ext_resource type="Script" uid="uid://xsrkuva4i6lq" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bj8qu1f7d3hoo" path="res://art/sprite/character/sprite_anima.png" id="2_i3pqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i3pqv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D" unique_id=1291397033]
+script = ExtResource("1_onrkg")
+
+[node name="collision_player" type="CollisionShape2D" parent="." unique_id=872042676]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="sprite_player" type="AnimatedSprite2D" parent="." unique_id=1024071353]
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"idle"
+
+[node name="camera_player" type="Camera2D" parent="." unique_id=1843943667]
+position_smoothing_speed = 2.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_top_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.4
+
+[node name="raycast_interact" type="RayCast2D" parent="." unique_id=817875400]
+position = Vector2(0, 22)
+target_position = Vector2(0, 28)

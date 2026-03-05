@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c1fnubdh6ra07"]
+
+[ext_resource type="FontFile" uid="uid://pt38168qk38f" path="res://art/font/ByteBounce.ttf" id="1_surb3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nap41"]
+bg_color = Color(0.15686275, 0, 0.16470589, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.078938104, 3.527984e-05, 0.115291215, 1)
+corner_detail = 1
+
+[node name="textbox" type="CanvasLayer" unique_id=1311028546]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1821575646]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 10
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1158668958]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nap41")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1113046225]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer" unique_id=1072151283]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" unique_id=305566309]
+layout_mode = 2
+
+[node name="start" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=170830289]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_surb3")
+text = " * "
+
+[node name="text" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=600547884]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_surb3")
+text = "placeholder text"
