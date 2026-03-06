@@ -54,14 +54,23 @@ func _on_area_interact_player_area_exited(area: Area2D) -> void:
 	if interact_target == area:
 		interact_target = null
 		print_debug(area)
+# ---------------
+
+
+# handle input
 func _unhandled_input(event: InputEvent) -> void:
+	# interact input
 	if event.is_action_pressed("ui_accept") and interact_target != null and !Gamestate.in_dialogue:
 		interact_target.interact()
 	else:
-		print_debug("interaction failed")
+		#print_debug("interaction failed")
+		pass
 	if event.is_action_pressed("ui_cancel") and Gamestate.in_dialogue:
 		DialogueManager.dialogue_ended
-
+	
+	# inventory input
+	if Input.is_action_just_pressed("inventory"):
+		pass
 # ---------------
 
 
@@ -73,7 +82,7 @@ func player_movement(_delta):
 	elif Gamestate.in_dialogue == true:
 		pass
 	velocity = direction * speed
-
+	
 	if direction != Vector2.ZERO:
 		last_direction = direction
 		pivot.rotation = direction.angle()
