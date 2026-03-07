@@ -1,0 +1,8 @@
+~ start
+...: look inside vase?
+
+- yes
+	...: the vase has nothing in it except for a layer of stone at the bottom.
+- no
+set Gamestate.in_dialogue = false
+=> END

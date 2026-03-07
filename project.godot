@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="nomen"
-config/version="v0.0.1"
-run/main_scene="uid://8r4cd01408eu"
+config/version="0.1"
+run/main_scene="uid://chi2jrix7bh0y"
+config/custom_user_dir_name="user://nomen"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=144
 boot_splash/bg_color=Color(0.021434637, 0.021434635, 0.021434633, 1)
@@ -31,13 +33,14 @@ runtime/balloon_path="res://nodes/dialogueballoon.tscn"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=4
 window/size/window_width_override=1920
 window/size/window_height_override=1080
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/pretty-gd/plugin.cfg")
 
 [input]
 
@@ -113,7 +116,7 @@ debug={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://script/dialogue/dev_03_intro.dialogue", "res://script/dialogue/dev_wall.dialogue", "res://script/dialogue/fallback.dialogue", "res://script/dialogue/object_chest_nothing.dialogue")
+locale/translations_pot_files=PackedStringArray("res://script/dialogue/dev_03_intro.dialogue", "res://script/dialogue/dev_wall.dialogue", "res://script/dialogue/fallback.dialogue", "res://script/dialogue/object_chest_nothing.dialogue", "res://script/dialogue/object_vase_nothing.dialogue", "res://script/dialogue/object_box_nothing.dialogue")
 
 [layer_names]
 
@@ -127,4 +130,5 @@ locale/translations_pot_files=PackedStringArray("res://script/dialogue/dev_03_in
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

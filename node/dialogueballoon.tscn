@@ -60,12 +60,12 @@ border_width_bottom = 2
 border_color = Color(0.078431375, 0, 0.11372549, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6nbm"]
-bg_color = Color(0.15686275, 0, 0.16470589, 1)
+bg_color = Color(0, 0, 0, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.078431375, 0, 0.11372549, 1)
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font = ExtResource("3_icwbi")
@@ -202,6 +202,7 @@ theme_override_font_sizes/bold_italics_font_size = 16
 theme_override_font_sizes/italics_font_size = 16
 theme_override_font_sizes/mono_font_size = 6
 text = "dialogue..."
+seconds_per_step = 0.04
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1197345009]
 custom_minimum_size = Vector2(5, 3)
@@ -255,4 +256,5 @@ text = "response example"
 unique_name_in_owner = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

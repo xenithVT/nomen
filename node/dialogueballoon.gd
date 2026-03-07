@@ -1,7 +1,6 @@
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
-
 ## The dialogue resource
 @export var dialogue_resource: DialogueResource
 
@@ -23,6 +22,12 @@ extends CanvasLayer
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+## character 'voice' path
+var character_voice_path: String
+
+## character voice
+var character_voice: Resource
+
 ## Temporary game states
 var temporary_game_states: Array = []
 
@@ -33,7 +38,7 @@ var is_waiting_for_input: bool = false
 var will_hide_balloon: bool = false
 
 ## A dictionary to store any ephemeral variables
-var locals: Dictionary = {}
+var locals: Dictionary = { }
 
 var _locale: String = TranslationServer.get_locale()
 
@@ -135,19 +140,28 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+
+	## character portrait
 	var portrait_path: String = "res://art/portrait/portrait_%s.png" % dialogue_line.character
-	if FileAccess.file_exists(portrait_path):
+	if ResourceLoader.exists(portrait_path):
 		portrait.texture = load(portrait_path)
-		print_debug("portrait texture found")
-		print_debug(portrait_path)
-	elif FileAccess.file_exists("res://art/portrait/portrait_anima.png"):
+		print_debug("portrait texture found: ", portrait_path)
+	elif ResourceLoader.exists("res://art/portrait/portrait_anima.png") and dialogue_line.character == "...":
 		portrait.texture = load("res://art/portrait/portrait_anima.png")
-		print_debug("portrait texture default")
-		print_debug(portrait_path)
+		print_debug("portrait texture default: ", portrait_path)
 	else:
 		portrait.texture = null
-		print_debug("portrait texture null")
-		print_debug(portrait_path)
+		print_debug("portrait texture null: ", portrait_path)
+
+	## character voice
+	if ResourceLoader.exists(character_voice_path):
+		character_voice_path = "res://audio/character/%s/voice_%s.wav" % [dialogue_line.character, dialogue_line.character]
+		audio_stream_player.stream = load(character_voice_path)
+		print_debug("character voice found: ", character_voice_path)
+	else:
+		character_voice_path = "res://audio/character/%s/voice_%s.wav" % [dialogue_line.character, dialogue_line.character]
+		audio_stream_player.stream = load("res://audio/null.wav")
+		print_debug("character voice null: ", character_voice_path)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -186,7 +200,6 @@ func apply_dialogue_line() -> void:
 ## Go to the next line
 func next(next_id: String) -> void:
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(next_id, temporary_game_states)
-
 
 #region Signals
 
@@ -229,5 +242,10 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
-
 #endregion
+
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	if not letter in [".", " "]:
+		audio_stream_player.pitch_scale = randf_range(0.9, 1.1)
+		audio_stream_player.play()

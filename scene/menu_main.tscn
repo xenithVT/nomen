@@ -13,48 +13,69 @@ script = ExtResource("1_w704d")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1902772161]
 custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 2
 theme = ExtResource("1_5xiob")
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=228290301]
 layout_mode = 2
+size_flags_vertical = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=270594057]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "nomen"
 label_settings = SubResource("LabelSettings_5xiob")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="start" type="Button" parent="MarginContainer/VBoxContainer" unique_id=249912514]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=189466249]
+offset_left = -1.0
+offset_top = 130.0
+offset_right = 623.0
+offset_bottom = 354.0
+theme = ExtResource("1_5xiob")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=89750534]
+layout_mode = 2
+
+[node name="start" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=249912514]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_next = NodePath("../load")
+focus_previous = NodePath("../quit")
 theme_override_font_sizes/font_size = 32
 text = "start"
 
-[node name="load" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1418656831]
+[node name="load" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1418656831]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "load"
 
-[node name="options" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1449895493]
+[node name="options" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1449895493]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "options"
 
-[node name="quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1978662167]
+[node name="quit" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1978662167]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/start" to="." method="_on_start_pressed"]
