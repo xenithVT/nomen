@@ -78,4 +78,6 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "quit"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=641014060]
+
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/start" to="." method="_on_start_pressed"]

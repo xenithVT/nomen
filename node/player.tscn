@@ -294,6 +294,9 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" unique_id=1291397033]
+collision_mask = 6
+motion_mode = 1
+wall_min_slide_angle = 0.13962634
 script = ExtResource("1_onrkg")
 
 [node name="collision_player" type="CollisionShape2D" parent="." unique_id=872042676]

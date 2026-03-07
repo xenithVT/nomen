@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # variables
-const speed: float = 80
+const speed: float = 85
 var direction: Vector2 = Vector2.ZERO
 var current_direction = "none"
 var last_direction := Vector2.DOWN
@@ -83,6 +83,7 @@ func player_movement(_delta):
 	if Gamestate.in_dialogue == false:
 		direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 		direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		direction = direction.normalized()
 	elif Gamestate.in_dialogue == true:
 		pass
 	velocity = direction * speed
