@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bqpldm5itlnwe"]
+
+[ext_resource type="Script" uid="uid://dqwqyjom33w7o" path="res://script/interactable_character.gd" id="1_83ip8"]
+[ext_resource type="Texture2D" uid="uid://dwshi3duvn56r" path="res://art/sprite/character/pip/sprite_pip.png" id="1_gx3ei"]
+[ext_resource type="PackedScene" uid="uid://tcq2d4qx4rm0" path="res://node/dialogueballoon.tscn" id="2_1v8r5"]
+[ext_resource type="Resource" uid="uid://cjrcx7huo1wqm" path="res://script/dialogue/pip_cave_start.dialogue" id="2_pjlpu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjlpu"]
+size = Vector2(22, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgsmu"]
+size = Vector2(22, 42)
+
+[node name="character_pip" type="CharacterBody2D" unique_id=1789716901]
+
+[node name="collision_pip" type="CollisionShape2D" parent="." unique_id=167288840]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_pjlpu")
+
+[node name="occluder_pip" type="LightOccluder2D" parent="." unique_id=406948861]
+
+[node name="InteractableCharacter" type="Area2D" parent="." unique_id=452676472]
+script = ExtResource("1_83ip8")
+dialogue_file = ExtResource("2_pjlpu")
+dialogue_balloon = ExtResource("2_1v8r5")
+metadata/_custom_type_script = "uid://dqwqyjom33w7o"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableCharacter" unique_id=117640960]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_fgsmu")
+
+[node name="sprite_pip" type="Sprite2D" parent="." unique_id=970216523]
+texture = ExtResource("1_gx3ei")

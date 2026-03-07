@@ -294,7 +294,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" unique_id=1291397033]
-collision_mask = 6
+collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.13962634
 script = ExtResource("1_onrkg")
@@ -392,6 +392,8 @@ shadow_filter = 2
 shadow_filter_smooth = 8.0
 texture = ExtResource("4_q2goq")
 texture_scale = 0.5
+
+[node name="player_audiosp" type="AudioStreamPlayer" parent="." unique_id=1829903463]
 
 [connection signal="area_entered" from="pivot/area_interact_player" to="." method="_on_area_interact_player_area_entered"]
 [connection signal="area_exited" from="pivot/area_interact_player" to="." method="_on_area_interact_player_area_exited"]

@@ -127,6 +127,14 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 		start_from_title = title
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
 	show()
+	if ResourceLoader.exists(character_voice_path):
+		character_voice_path = "res://audio/character/%s/voice_%s.wav" % [dialogue_line.character, dialogue_line.character]
+		audio_stream_player.stream = load(character_voice_path)
+		print_debug("character voice found: ", character_voice_path)
+	else:
+		character_voice_path = "res://audio/character/%s/voice_%s.wav" % [dialogue_line.character, dialogue_line.character]
+		audio_stream_player.stream = load("res://audio/null.wav")
+		print_debug("character voice null: ", character_voice_path)
 
 
 ## Apply any changes to the balloon given a new [DialogueLine].
@@ -240,12 +248,16 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
+	audio_stream_player.stream = load("res://audio/menu/select.wav")
+	audio_stream_player.pitch_scale = randf_range(0.9, 1.1)
+	audio_stream_player.play()
+	await get_tree().create_timer(0.1).timeout
 	next(response.next_id)
 
 #endregion
 
 
 func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
-	if not letter in [".", " "]:
+	if not letter in [".", " ", "?", ","]:
 		audio_stream_player.pitch_scale = randf_range(0.9, 1.1)
 		audio_stream_player.play()

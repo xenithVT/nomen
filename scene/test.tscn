@@ -1203,7 +1203,7 @@ physics_quadrant_size = 32
 position = Vector2(123, 116)
 
 [node name="player" parent="." unique_id=1291397033 instance=ExtResource("1_errlg")]
-position = Vector2(142, 84)
+position = Vector2(182, 82)
 
 [node name="Chest" type="Area2D" parent="." unique_id=552528914]
 position = Vector2(285, 80)
@@ -1238,7 +1238,6 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_sov46")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1540064839]
-visible = false
 color = Color(0.14509805, 0.15686275, 0.1764706, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=662927199]

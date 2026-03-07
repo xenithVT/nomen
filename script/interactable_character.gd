@@ -16,19 +16,19 @@ func interact():
 		print_debug(dialogue_file)
 		print_debug(dialogue_balloon)
 	elif !dialogue_file:
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_path_fallback, 
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_path_fallback,
 		load(dialogue_path_fallback), "dialogue_path_fail")
 		print_debug("invalid path")
 		print_debug(dialogue_file)
 		print_debug(dialogue_balloon)
 	elif !dialogue_balloon:
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_path_fallback, 
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_path_fallback,
 		load(dialogue_path_fallback), "dialogue_balloon_path_fail")
 		print_debug("invalid balloon path")
 		print_debug(dialogue_file)
 		print_debug(dialogue_balloon)
 	else:
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_path_fallback, 
+		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon_path_fallback,
 		load(dialogue_path_fallback), "generic_fail")
 		print_debug("invalid path and/or balloon path")
 		print_debug(dialogue_file)
