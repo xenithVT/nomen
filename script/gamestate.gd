@@ -14,12 +14,14 @@ var debug_array = []
 
 # combat variables
 var start_combat = false
+enum combat_phase { CHOICE, DODGE, FIGHT }
 var combat_choice_phase = false
 var combat_fight_phase = false
 var combat_dodge_phase = false
 var player_damage = 20
 var combat_opponent: String = "torin"
 var metronome_enabled = true
+var player_can_move = true
 
 
 # debug stuff

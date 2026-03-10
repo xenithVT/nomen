@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://idruebu6qp4u" path="res://scene/combat_scene.gd" id="1_8fdq7"]
 [ext_resource type="PackedScene" uid="uid://c8o06hxyvl5d7" path="res://node/rhythm_map/map_torin_fight.tscn" id="2_5h52y"]
+[ext_resource type="PackedScene" uid="uid://e7kbo1wgq4l7" path="res://node/map_torin_dodge.tscn" id="2_50f6i"]
 [ext_resource type="Texture2D" uid="uid://cwnq1n4ax6ebi" path="res://art/tileset/combat_walls.png" id="2_q28wb"]
 [ext_resource type="PackedScene" uid="uid://vuknjnsgee1o" path="res://node/player_combat.tscn" id="3_5et3g"]
 [ext_resource type="PackedScene" uid="uid://bdxyrcqo3ldum" path="res://node/combat_ui.tscn" id="4_5h52y"]
-[ext_resource type="Texture2D" uid="uid://crlbtfhrfjkpi" path="res://art/sprite/scene/fight/spike.png" id="5_q28wb"]
-[ext_resource type="Texture2D" uid="uid://c5btchipi46ii" path="res://art/sprite/sprite_hitcircle.png" id="7_50f6i"]
+[ext_resource type="Texture2D" uid="uid://c5btchipi46ii" path="res://art/sprite/combat/sprite_hitcircle.png" id="7_50f6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyjm2"]
 texture = ExtResource("2_q28wb")
@@ -41,9 +41,6 @@ tile_size = Vector2i(20, 20)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xyjm2")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5et3g"]
-size = Vector2(18, 22)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_50f6i"]
 radius = 3.0
 
@@ -53,32 +50,41 @@ radius = 15.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5et3g"]
 radius = 32.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5h52y"]
+texture = ExtResource("2_q28wb")
+texture_region_size = Vector2i(20, 20)
+1:1/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_50f6i"]
+tile_size = Vector2i(20, 20)
+sources/0 = SubResource("TileSetAtlasSource_5h52y")
+
 [node name="combat_area" type="Node2D" unique_id=873178126]
 script = ExtResource("1_8fdq7")
 
+[node name="map_torin_dodge" parent="." unique_id=1288707739 instance=ExtResource("2_50f6i")]
+position = Vector2(320, -64)
+
 [node name="map_torin_fight" parent="." unique_id=2043744703 instance=ExtResource("2_5h52y")]
-position = Vector2(0, 96)
 
 [node name="floor" type="TileMapLayer" parent="." unique_id=775259013]
 position = Vector2(10, -144)
 tile_map_data = PackedByteArray("AAANAA8AAAABAAIAAAAOAA8AAAABAAIAAAAPAA8AAAABAAIAAAAQAA8AAAABAAIAAAARAA8AAAABAAIAAAASAA8AAAABAAIAAAATAA8AAAACAAIAAAATAAgAAAACAAAAAAASAAgAAAABAAAAAAARAAgAAAABAAAAAAAQAAgAAAABAAAAAAAPAAgAAAABAAAAAAAOAAgAAAABAAAAAAANAAgAAAABAAAAAAAMAAgAAAABAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAEAAAALAAoAAAAAAAEAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAALAA0AAAAAAAEAAAALAA4AAAAAAAEAAAALAA8AAAAAAAIAAAAMAA8AAAABAAIAAAATAA4AAAACAAEAAAATAA0AAAACAAEAAAATAAwAAAACAAEAAAATAAsAAAACAAEAAAATAAoAAAACAAEAAAATAAkAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_n40sy")
 
-[node name="spike" type="StaticBody2D" parent="floor" unique_id=704063768]
-position = Vector2(368, 288)
-
-[node name="Sprite2D" type="Sprite2D" parent="floor/spike" unique_id=2036068574]
-texture = ExtResource("5_q28wb")
-
-[node name="Area2D" type="Area2D" parent="floor/spike" unique_id=1137491550 groups=["hurtbox"]]
-
-[node name="hurtbox" type="CollisionShape2D" parent="floor/spike/Area2D" unique_id=424262666]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_5et3g")
-debug_color = Color(0.9143314, 0.2691737, 0.29624435, 0.41960785)
-
 [node name="player_combat" parent="." unique_id=93577965 instance=ExtResource("3_5et3g")]
-position = Vector2(320, 97)
+position = Vector2(320, 149)
 
 [node name="hitcircle" type="StaticBody2D" parent="." unique_id=665293502]
 position = Vector2(320, 97)
@@ -108,6 +114,14 @@ debug_color = Color(0.9286257, 0.27530095, 0.052972242, 0.41960785)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1008242549]
 volume_db = -16.0
+
+[node name="tilemap_block" type="TileMapLayer" parent="." unique_id=1663604605]
+visible = false
+tile_map_data = PackedByteArray("AAAKAAEAAAADAAIAAAAKAAIAAAADAAIAAAAKAAMAAAADAAIAAAAKAAQAAAADAAIAAAAKAAUAAAADAAIAAAAKAAYAAAADAAIAAAAKAAcAAAADAAIAAAAKAAgAAAADAAIAAAAKAAkAAAADAAIAAAAKAAoAAAADAAIAAAAKAAsAAAADAAIAAAAKAAwAAAADAAIAAAAJAAwAAAADAAIAAAAIAAwAAAADAAIAAAAHAAwAAAADAAIAAAAGAAwAAAADAAIAAAAFAAwAAAADAAIAAAAEAAwAAAADAAIAAAADAAwAAAADAAIAAAACAAwAAAADAAIAAAABAAwAAAADAAIAAAAAAAwAAAADAAIAAAAAAAsAAAADAAIAAAAAAAoAAAADAAIAAAAAAAkAAAADAAIAAAAAAAgAAAADAAIAAAAAAAcAAAADAAIAAAAAAAYAAAADAAIAAAAAAAUAAAADAAIAAAAAAAQAAAADAAIAAAAAAAMAAAADAAIAAAAAAAIAAAADAAIAAAAAAAEAAAADAAIAAAAAAAAAAAADAAIAAAABAAAAAAADAAIAAAACAAAAAAADAAIAAAADAAAAAAADAAIAAAAEAAAAAAADAAIAAAAFAAAAAAADAAIAAAAGAAAAAAADAAIAAAAHAAAAAAADAAIAAAAIAAAAAAADAAIAAAAJAAAAAAADAAIAAAAKAAAAAAADAAIAAAALAAAAAAADAAIAAAAHAAYAAAADAAIAAAAHAAUAAAADAAIAAAAHAAQAAAADAAIAAAAHAAMAAAADAAIAAAAHAAIAAAADAAIAAAAHAAEAAAADAAIAAAAGAAEAAAADAAIAAAAFAAEAAAADAAIAAAAEAAEAAAADAAIAAAADAAEAAAADAAIAAAACAAEAAAADAAIAAAABAAEAAAADAAIAAAABAAIAAAADAAIAAAABAAMAAAADAAIAAAABAAQAAAADAAIAAAABAAUAAAADAAIAAAABAAYAAAADAAIAAAABAAcAAAADAAIAAAABAAgAAAADAAIAAAABAAkAAAADAAIAAAABAAoAAAADAAIAAAABAAsAAAADAAIAAAACAAsAAAADAAIAAAACAAoAAAADAAIAAAACAAkAAAADAAIAAAACAAgAAAADAAIAAAACAAcAAAADAAIAAAACAAYAAAADAAIAAAACAAUAAAADAAIAAAACAAQAAAADAAIAAAACAAMAAAADAAIAAAACAAIAAAADAAIAAAADAAIAAAADAAIAAAADAAMAAAADAAIAAAADAAQAAAADAAIAAAADAAUAAAADAAIAAAADAAYAAAADAAIAAAADAAcAAAADAAIAAAADAAgAAAADAAIAAAADAAkAAAADAAIAAAADAAoAAAADAAIAAAADAAsAAAADAAIAAAAEAAsAAAADAAIAAAAEAAoAAAADAAIAAAAEAAkAAAADAAIAAAAEAAgAAAADAAIAAAAEAAcAAAADAAIAAAAEAAYAAAADAAIAAAAEAAUAAAADAAIAAAAEAAQAAAADAAIAAAAEAAMAAAADAAIAAAAEAAIAAAADAAIAAAAFAAIAAAADAAIAAAAFAAMAAAADAAIAAAAFAAQAAAADAAIAAAAFAAUAAAADAAIAAAAFAAYAAAADAAIAAAAFAAcAAAADAAIAAAAFAAgAAAADAAIAAAAFAAkAAAADAAIAAAAFAAoAAAADAAIAAAAFAAsAAAADAAIAAAAGAAsAAAADAAIAAAAGAAoAAAADAAIAAAAGAAkAAAADAAIAAAAGAAgAAAADAAIAAAAGAAcAAAADAAIAAAAGAAYAAAADAAIAAAAGAAUAAAADAAIAAAAGAAQAAAADAAIAAAAGAAMAAAADAAIAAAAGAAIAAAADAAIAAAAHAAcAAAADAAIAAAAHAAgAAAADAAIAAAAHAAkAAAADAAIAAAAHAAoAAAADAAIAAAAHAAsAAAADAAIAAAAIAAsAAAADAAIAAAAIAAoAAAADAAIAAAAIAAkAAAADAAIAAAAIAAgAAAADAAIAAAAIAAcAAAADAAIAAAAIAAYAAAADAAIAAAAIAAUAAAADAAIAAAAIAAQAAAADAAIAAAAIAAMAAAADAAIAAAAIAAIAAAADAAIAAAAIAAEAAAADAAIAAAAJAAEAAAADAAIAAAAJAAIAAAADAAIAAAAJAAMAAAADAAIAAAAJAAQAAAADAAIAAAAJAAUAAAADAAIAAAAJAAYAAAADAAIAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAIAAAAJAAoAAAADAAIAAAAJAAsAAAADAAIAAAA=")
+tile_set = SubResource("TileSet_50f6i")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1685824146]
+position = Vector2(320, 180)
 
 [connection signal="area_entered" from="hitcircle/great" to="." method="_on_great_area_entered"]
 [connection signal="area_exited" from="hitcircle/great" to="." method="_on_great_area_exited"]

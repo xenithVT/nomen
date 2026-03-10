@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 
 func _on_button_fight_button_down() -> void:
 	Gamestate.combat_choice_phase = false
+	Gamestate.combat_dodge_phase = false
 	Gamestate.combat_fight_phase = true
 	audio_stream_player.stream = load("res://audio/menu/select.wav")
 	audio_stream_player.play()

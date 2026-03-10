@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5btchipi46ii"
-path="res://.godot/imported/sprite_hitcircle.png-afd383e87b9ede76f60d69cc2f4c7ad1.ctex"
+uid="uid://c4ok3h8hrng3g"
+path="res://.godot/imported/sprite_rhythm_circle.png-063e0456e0d3da9a7912e752802d6d07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/sprite/sprite_hitcircle.png"
-dest_files=["res://.godot/imported/sprite_hitcircle.png-afd383e87b9ede76f60d69cc2f4c7ad1.ctex"]
+source_file="res://art/sprite/combat/sprite_rhythm_circle.png"
+dest_files=["res://.godot/imported/sprite_rhythm_circle.png-063e0456e0d3da9a7912e752802d6d07.ctex"]
 
 [params]
 

@@ -35,12 +35,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # player movement
 func player_movement(_delta):
-	if Gamestate.in_dialogue == false and Gamestate.combat_choice_phase == false:
+	if Gamestate.in_dialogue == false and Gamestate.player_can_move == true:
 		direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 		direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 		direction = direction.normalized()
 		velocity = direction * speed
-	elif Gamestate.in_dialogue == true or Gamestate.combat_choice_phase == true:
+	elif Gamestate.in_dialogue == true or Gamestate.player_can_move == false:
 		velocity = Vector2(0, 0)
 # ---------------
 

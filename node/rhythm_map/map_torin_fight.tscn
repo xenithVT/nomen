@@ -11,7 +11,7 @@ position = Vector2(640, 96)
 [node name="all_rhythm_circles" type="Node2D" parent="." unique_id=2079594774]
 
 [node name="rhythm_circle" parent="all_rhythm_circles" unique_id=443032255 instance=ExtResource("1_8pjcq")]
-position = Vector2(32, 0)
+position = Vector2(47, 0)
 
 [node name="rhythm_circle2" parent="all_rhythm_circles" unique_id=1318940917 instance=ExtResource("1_8pjcq")]
 position = Vector2(288, 0)

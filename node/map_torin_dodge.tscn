@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://e7kbo1wgq4l7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhk7"]
+size = Vector2(40, 40)
+
+[node name="map_torin_dodge" type="Node2D" unique_id=1288707739]
+position = Vector2(320, 0)
+
+[node name="tile" type="Node2D" parent="." unique_id=146340843]
+position = Vector2(30, 0)
+
+[node name="Area2D" type="Area2D" parent="tile" unique_id=1339999847 groups=["hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tile/Area2D" unique_id=1702279834]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_qvhk7")
+debug_color = Color(0, 0.5950001, 0.7, 0)
+
+[node name="tile_outline_rect" type="ColorRect" parent="tile/Area2D/CollisionShape2D" unique_id=958144985]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.38039216, 0.18431373, 0.2784314, 1)
+
+[node name="tile_rect" type="ColorRect" parent="tile/Area2D/CollisionShape2D" unique_id=1970865049]
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 19.0
+color = Color(0.89411765, 0.20784314, 0.41568628, 1)
