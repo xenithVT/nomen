@@ -1,0 +1,6 @@
+~ start
+torin: I'M GONNA FIGHT YOU NOW.
+set Gamestate.in_dialogue = false
+set Gamestate.start_combat = true
+set Gamestate.combat_opponent = "torin"
+=> END

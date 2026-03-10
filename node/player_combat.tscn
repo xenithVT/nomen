@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://vuknjnsgee1o"]
+
+[ext_resource type="Texture2D" uid="uid://wokcidt1e264" path="res://art/sprite/character/sprite_player_combat.png" id="1_dn1uj"]
+[ext_resource type="Script" uid="uid://h4bul6nxgw4s" path="res://node/player_combat.gd" id="1_r8kgh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m400"]
+size = Vector2(6, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kal2"]
+size = Vector2(8, 13)
+
+[node name="player_combat" type="CharacterBody2D" unique_id=93577965]
+motion_mode = 1
+wall_min_slide_angle = 0.13962634
+script = ExtResource("1_r8kgh")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1894004995]
+texture = ExtResource("1_dn1uj")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1314504335]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6m400")
+debug_color = Color(0.54256123, 0.5303146, 0.5543668, 0.41960785)
+
+[node name="animation_player" type="AnimationPlayer" parent="." unique_id=1968817282]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=816073328]
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1183694185]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8kal2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1822145895]
+volume_db = -16.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

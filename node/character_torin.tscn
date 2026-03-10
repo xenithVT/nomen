@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://blas12kjp55u2"]
+
+[ext_resource type="Script" uid="uid://dqwqyjom33w7o" path="res://script/interactable_character.gd" id="1_4b3i1"]
+[ext_resource type="Texture2D" uid="uid://bwwrbs8nrhj4k" path="res://art/sprite/character/torin/sprite_torin_stone.png" id="2_78erc"]
+[ext_resource type="Resource" uid="uid://jutvgp58f0ds" path="res://script/dialogue/cave_torin_start.dialogue" id="2_dwkc7"]
+[ext_resource type="PackedScene" uid="uid://tcq2d4qx4rm0" path="res://node/dialogueballoon.tscn" id="3_ygb5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78erc"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3i1"]
+size = Vector2(32, 25)
+
+[node name="character_torin_enemy" type="CharacterBody2D" unique_id=1685215091]
+
+[node name="InteractableCharacter" type="Area2D" parent="." unique_id=912674797]
+script = ExtResource("1_4b3i1")
+dialogue_file = ExtResource("2_dwkc7")
+dialogue_balloon = ExtResource("3_ygb5e")
+metadata/_custom_type_script = "uid://dqwqyjom33w7o"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableCharacter" unique_id=148175458]
+shape = SubResource("RectangleShape2D_78erc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=349887625]
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_4b3i1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=680252004]
+texture = ExtResource("2_78erc")

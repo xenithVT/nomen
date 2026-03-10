@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://css518vob80nl"]
 
 [ext_resource type="Script" uid="uid://xsrkuva4i6lq" path="res://script/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://efhtkh8mhpot" path="res://node/pause_menu.tscn" id="2_5qpld"]
 [ext_resource type="Script" uid="uid://eqja0571rxni" path="res://node/hitbox_player.gd" id="2_me0cc"]
 [ext_resource type="Texture2D" uid="uid://b0qm6p00yde34" path="res://art/sprite/character/anima/anima_head.png" id="4_3bvod"]
 [ext_resource type="Texture2D" uid="uid://cddupoq81ldy8" path="res://art/sprite/sprite_light.png" id="4_q2goq"]
@@ -299,6 +300,9 @@ motion_mode = 1
 wall_min_slide_angle = 0.13962634
 script = ExtResource("1_onrkg")
 
+[node name="canvas_pausemenu" parent="." unique_id=1660309162 instance=ExtResource("2_5qpld")]
+visible = false
+
 [node name="collision_player" type="CollisionShape2D" parent="." unique_id=872042676]
 position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_hqtel")
@@ -310,14 +314,6 @@ script = ExtResource("2_me0cc")
 [node name="shape_hitbox_player" type="CollisionShape2D" parent="hitbox_player" unique_id=1006568890]
 shape = SubResource("RectangleShape2D_bms3g")
 debug_color = Color(0.9218867, 0.25909185, 0.27583176, 0.41960785)
-
-[node name="debug_hitbox" type="ColorRect" parent="hitbox_player/shape_hitbox_player" unique_id=1386571456]
-visible = false
-offset_left = -9.0
-offset_top = -25.0
-offset_right = 9.0
-offset_bottom = 25.0
-color = Color(0.92156863, 0.25882354, 0.27450982, 0.41960785)
 
 [node name="camera_player" type="Camera2D" parent="." unique_id=1843943667]
 zoom = Vector2(2, 2)
@@ -340,14 +336,6 @@ script = SubResource("GDScript_bms3g")
 [node name="shape_interact_player" type="CollisionShape2D" parent="pivot/area_interact_player" unique_id=1682543539]
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_me0cc")
-
-[node name="debug_interact_hitbox" type="ColorRect" parent="pivot/area_interact_player/shape_interact_player" unique_id=515769719]
-visible = false
-offset_left = -9.25
-offset_top = -9.0
-offset_right = 8.75
-offset_bottom = 9.0
-color = Color(0, 0.6, 0.7019608, 0.41960785)
 
 [node name="player_sprites" type="Node2D" parent="." unique_id=1580457304]
 
@@ -393,7 +381,9 @@ shadow_filter_smooth = 8.0
 texture = ExtResource("4_q2goq")
 texture_scale = 0.5
 
-[node name="player_audiosp" type="AudioStreamPlayer" parent="." unique_id=1829903463]
+[node name="audiostreamplayer_player" type="AudioStreamPlayer" parent="." unique_id=1829903463]
+volume_db = -16.0
+max_polyphony = 32
 
 [connection signal="area_entered" from="pivot/area_interact_player" to="." method="_on_area_interact_player_area_entered"]
 [connection signal="area_exited" from="pivot/area_interact_player" to="." method="_on_area_interact_player_area_exited"]

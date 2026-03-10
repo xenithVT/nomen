@@ -6,10 +6,11 @@ var direction: Vector2 = Vector2.ZERO
 var current_direction = "none"
 var last_direction := Vector2.DOWN
 var debug_shown = false
-@onready var interact_area = $pivot/area_interact_player
 @onready var pivot = $pivot
+@onready var pause_menu = $canvas_pausemenu
 var target_angle: float
 var interact_target = null
+@onready var health = Playermanager.player_health
 # ---------------
 
 
@@ -21,31 +22,14 @@ func _ready():
 
 # process functions
 func _process(_delta):
-	player_movement(_delta)
 	debug()
 	play_anim(_delta)
+	start_combat()
 
 
 func _physics_process(_delta: float) -> void:
+	player_movement(_delta)
 	move_and_slide()
-# ---------------
-
-
-# debug
-func debug():
-	if Input.is_action_just_pressed("debug") and Gamestate.debug_array != []:
-		print_debug(Gamestate.debug_array)
-	elif Input.is_action_just_pressed("debug") and Gamestate.debug_array == []:
-		print_debug("no debug flags present")
-
-	if Input.is_action_just_pressed("debug") and debug_shown == false:
-		$hitbox_player/shape_hitbox_player/debug_hitbox.show()
-		$pivot/area_interact_player/shape_interact_player/debug_interact_hitbox.show()
-		debug_shown = true
-	elif Input.is_action_just_pressed("debug") and debug_shown == true:
-		$hitbox_player/shape_hitbox_player/debug_hitbox.hide()
-		$pivot/area_interact_player/shape_interact_player/debug_interact_hitbox.hide()
-		debug_shown = false
 # ---------------
 
 
@@ -75,6 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# inventory input
 	if Input.is_action_just_pressed("inventory"):
 		pass
+
 # ---------------
 
 
@@ -96,6 +81,11 @@ func player_movement(_delta):
 # ---------------
 
 
+func start_combat():
+	if Gamestate.start_combat == true:
+		get_tree().change_scene_to_file("res://scene/combat_scene.tscn")
+
+
 func play_anim(_movement):
 	var anim = $animation_player
 
@@ -113,4 +103,23 @@ func play_anim(_movement):
 	#if last_direction == Vector2.DOWN:
 		#anim.play("idle")
 		#anim.flip_h = false
+# ---------------
+
+
+# debug
+func debug():
+	if Input.is_action_just_pressed("debug"):
+		print_debug(Dialoguestate.pipcounter)
+		if Gamestate.debug_array.is_empty():
+			print_debug("no debug flags present")
+		else:
+			Input.is_action_just_pressed("debug")
+			print_debug(Gamestate.debug_array)
+
+	if Input.is_action_just_pressed("debug") and debug_shown == false:
+		get_tree().debug_collisions_hint = true
+		debug_shown = true
+	elif Input.is_action_just_pressed("debug") and debug_shown == true:
+		get_tree().debug_collisions_hint = false
+		debug_shown = false
 # ---------------

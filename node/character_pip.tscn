@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cjrcx7huo1wqm" path="res://script/dialogue/pip_cave_start.dialogue" id="2_pjlpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjlpu"]
-size = Vector2(22, 42)
+size = Vector2(22, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgsmu"]
 size = Vector2(22, 42)
@@ -14,7 +14,7 @@ size = Vector2(22, 42)
 [node name="character_pip" type="CharacterBody2D" unique_id=1789716901]
 
 [node name="collision_pip" type="CollisionShape2D" parent="." unique_id=167288840]
-position = Vector2(-1, 11)
+position = Vector2(-1, 22)
 shape = SubResource("RectangleShape2D_pjlpu")
 
 [node name="occluder_pip" type="LightOccluder2D" parent="." unique_id=406948861]

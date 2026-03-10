@@ -3,8 +3,17 @@ extends Node
 # inventory
 var grass_power = false
 
-# xp
+# stats
+var player_health: int = 100
+var default_player_health: int = 100
+var player_spirit: int = 100
 var xp = 0
-
-# lvl
 var lvl = 0
+
+
+# take damage
+func take_damage(dmg: int):
+	if player_health > 0:
+		player_health -= dmg
+	else:
+		player_health = 0

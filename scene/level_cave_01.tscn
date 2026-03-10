@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player.tscn" id="1_xuawd"]
 [ext_resource type="Texture2D" uid="uid://dvsyf5wrr4mjl" path="res://art/tileset/cave/cave_floor.png" id="1_y86i1"]
 [ext_resource type="Texture2D" uid="uid://bpkby8o2jcded" path="res://art/tileset/cave/cave_walls.png" id="2_cg5eu"]
+[ext_resource type="PackedScene" uid="uid://blas12kjp55u2" path="res://node/character_torin.tscn" id="5_2u4cx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cg5eu"]
 texture = ExtResource("1_y86i1")
@@ -171,3 +172,6 @@ position = Vector2(-10, -15)
 
 [node name="character_pip" parent="." unique_id=1789716901 instance=ExtResource("1_aq87d")]
 position = Vector2(-69, -19)
+
+[node name="character_torin" parent="." unique_id=1685215091 instance=ExtResource("5_2u4cx")]
+position = Vector2(192, -62)

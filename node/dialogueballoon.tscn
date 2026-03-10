@@ -255,7 +255,7 @@ text = "response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=762289536]
 unique_name_in_owner = true
-volume_db = -8.0
+volume_db = -6.0
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]

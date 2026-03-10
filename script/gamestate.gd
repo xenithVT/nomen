@@ -12,6 +12,15 @@ var current_route = "neutral"
 var in_dialogue = false
 var debug_array = []
 
+# combat variables
+var start_combat = false
+var combat_choice_phase = false
+var combat_fight_phase = false
+var combat_dodge_phase = false
+var player_damage = 20
+var combat_opponent: String = "torin"
+var metronome_enabled = true
+
 
 # debug stuff
 func _input(event: InputEvent) -> void:
