@@ -321,10 +321,7 @@ debug_color = Color(0.9218867, 0.25909185, 0.27583176, 0.41960785)
 
 [node name="camera_player" type="Camera2D" parent="." unique_id=1843943667]
 zoom = Vector2(2, 2)
-position_smoothing_enabled = true
 position_smoothing_speed = 6.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 drag_left_margin = 0.3
 drag_top_margin = 0.1
 drag_right_margin = 0.3
@@ -377,13 +374,12 @@ texture_scale = 0.1
 [node name="light_player" type="PointLight2D" parent="." unique_id=860183195]
 position = Vector2(0, 21)
 color = Color(0.8039216, 0.7176471, 0.37254903, 1)
-energy = 0.75
 blend_mode = 2
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 8.0
 texture = ExtResource("4_q2goq")
-texture_scale = 0.5
+texture_scale = 0.75
 
 [node name="audiostreamplayer_player" type="AudioStreamPlayer" parent="." unique_id=1829903463]
 volume_db = -16.0

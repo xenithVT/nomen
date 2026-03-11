@@ -5,11 +5,14 @@ var grass_power = false
 
 # stats
 var player_health: int = 100
-var default_player_health: int = 100
+var player_max_health: int = 100
 var player_spirit: int = 100
 var player_defense: int = 1
-var xp = 0
-var lvl = 0
+var player_xp = 0
+var player_lvl = 1
+
+# xp calculation
+var player_xp_for_next_lvl = 100
 
 
 # take damage

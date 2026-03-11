@@ -1,6 +1,6 @@
 extends Node
 
-var game_version = "0.1"
+var game_version = "0.5"
 
 
 # game start stuff

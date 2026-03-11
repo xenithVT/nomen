@@ -7,12 +7,20 @@ var game_paused = false
 @onready var button_items = $MarginContainer/menu_options/MarginContainer/HBoxContainer/container_button/button_items
 @onready var button_quit = $MarginContainer/menu_options/MarginContainer/HBoxContainer/container_button/button_quit
 @onready var menu_options = $MarginContainer/menu_options
+@onready var label_hp_options = $MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2/label_character_health
+@onready var label_xp_options = $MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2/label_character_lvl
 @onready var menu_stats = $MarginContainer/menu_stats
 @onready var menu_items = $MarginContainer/menu_items
 @onready var first_item = $MarginContainer/menu_items/MarginContainer/VBoxContainer/HBoxContainer/item_container_left/Button
-@onready var label_hp = $MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2/label_character_health
 @onready var player = get_parent()
 @onready var audio_stream_player = player.get_node("audiostreamplayer_player")
+
+@onready var label_hp = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_health
+@onready var label_lvl = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_lvl
+@onready var label_sp = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_spirit
+@onready var label_xp = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_xp
+@onready var label_def = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_def
+
 var last_button_pressed
 var really_quit = false
 
@@ -28,7 +36,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	label_hp_options.text = "hp: " + str(Playermanager.player_health) + "/" + str(Playermanager.player_max_health)
+	label_xp_options.text = "xp: " + str(Playermanager.player_xp) + "/" + str(Playermanager.player_xp_for_next_lvl)
 
 
 func _unhandled_input(event):
@@ -57,8 +66,16 @@ func _unhandled_input(event):
 		really_quit = false
 
 
-func pause():
+func refresh_stats():
+	label_lvl.text = "lvl: " + str(Playermanager.player_lvl)
 	label_hp.text = "hp: " + str(Playermanager.player_health)
+	label_sp.text = "sp: " + str(Playermanager.player_spirit)
+	label_def.text = "def: " + str(Playermanager.player_defense)
+	label_xp.text = "xp: " + str(Playermanager.player_xp)
+
+
+func pause():
+	label_hp_options.text = "hp: " + str(Playermanager.player_health)
 	#label_sp.text = "sp: " + str(Playermanager.player_spirit)
 	get_tree().paused = true
 	self.visible = true
@@ -98,6 +115,7 @@ func _on_button_load_pressed() -> void:
 	#unpause()
 	last_button_pressed = button_load
 func _on_button_stats_pressed() -> void:
+	refresh_stats()
 	menu_options.hide()
 	menu_stats.show()
 	current_menu = "stats"
