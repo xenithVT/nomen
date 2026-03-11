@@ -64,7 +64,7 @@ focus_previous = NodePath("../quit")
 mouse_filter = 2
 mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 32
-text = "start"
+text = "start new game"
 
 [node name="load" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1418656831]
 layout_mode = 2

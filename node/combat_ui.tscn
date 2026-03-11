@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bdxyrcqo3ldum"]
 
 [ext_resource type="Script" uid="uid://cmvs07lmu2702" path="res://script/combat_ui.gd" id="1_4c0xa"]
-[ext_resource type="Theme" uid="uid://c0wd4p83mvjqw" path="res://art/menu_item.theme" id="2_rfyff"]
-[ext_resource type="PackedScene" uid="uid://cy23l7oa454u5" path="res://node/dialogueballoon_combat.tscn" id="3_cd68q"]
+[ext_resource type="Theme" uid="uid://c2sjea6m376xo" path="res://art/combat_theme.theme" id="2_cd68q"]
 
 [node name="combat_ui" type="CanvasLayer" unique_id=786580201]
 script = ExtResource("1_4c0xa")
@@ -18,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_rfyff")
+theme = ExtResource("2_cd68q")
 
 [node name="margin_fight_ui" type="MarginContainer" parent="Control" unique_id=1729014468]
 layout_mode = 1
@@ -158,9 +157,6 @@ focus_neighbor_left = NodePath("../button_item")
 focus_neighbor_right = NodePath("../button_fight")
 theme_override_font_sizes/font_size = 32
 text = "convert"
-
-[node name="ExampleBalloon" parent="Control/container_player_options/PanelContainer/MarginContainer" unique_id=1753511599 instance=ExtResource("3_cd68q")]
-visible = false
 
 [node name="audiostreamplayer_combat" type="AudioStreamPlayer" parent="." unique_id=201093328]
 

@@ -122,7 +122,7 @@ tile_set = SubResource("TileSet_50f6i")
 position = Vector2(320, 180)
 
 [node name="audio_fight_music" type="AudioStreamPlayer" parent="." unique_id=1008242549]
-volume_db = -8.0
+volume_db = -2.0
 max_polyphony = 2
 
 [connection signal="area_entered" from="hitcircle/great" to="." method="_on_great_area_entered"]

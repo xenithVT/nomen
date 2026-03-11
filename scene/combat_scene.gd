@@ -45,7 +45,6 @@ var metronome_enabled
 
 
 func _ready() -> void:
-
 	metronome_enabled = Gamestate.metronome_enabled
 	print("combat opponent is: ", Gamestate.combat_opponent)
 	# get rhythm map and song
@@ -55,6 +54,8 @@ func _ready() -> void:
 	rhythm_map_start = true
 	#-
 	Gamestate.combat_dodge_phase = true
+	Gamestate.combat_choice_phase = false
+	Gamestate.combat_fight_phase = false
 	metronome_path.stream = metronome_sound
 	start_metronome()
 	player.position = player_hide_position
@@ -70,14 +71,14 @@ func find_valid_paths():
 		metronome_path = get_node("map_%s_fight/metronome" % Gamestate.combat_opponent)
 		bpm_timer = get_node("map_%s_fight/bpm_timer" % Gamestate.combat_opponent)
 	else:
-		push_error("ERR NOT FOUND - rhythm map or components: ", rhythm_map_path)
+		push_error("ERR NOT FOUND - rhythm map or components: " + rhythm_map_path)
 	if ResourceLoader.exists(rhythm_map_song):
 		audio_fight_music.stream = load(rhythm_map_song)
 		audio_fight_music.play()
 		print_debug("FOUND - rhythm map song: ", rhythm_map_song)
 	else:
 		audio_fight_music.stream = load("res://audio/null.wav")
-		push_error("ERR NOT FOUND - rhythm map song: ", rhythm_map_song)
+		push_error("ERR NOT FOUND - rhythm map song: " + rhythm_map_song)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,11 +87,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		Gamestate.combat_choice_phase = true
 		Gamestate.combat_dodge_phase = false
 		Gamestate.combat_fight_phase = false
+		print_debug("combat phase switch")
 
 	elif Input.is_action_just_pressed("pause_menu") and !Gamestate.combat_dodge_phase:
 		Gamestate.combat_choice_phase = false
 		Gamestate.combat_dodge_phase = true
 		Gamestate.combat_fight_phase = false
+		print_debug("combat phase switch")
 
 	if Gamestate.combat_fight_phase == true:
 		get_hit_score()
@@ -109,12 +112,6 @@ func _process(delta: float) -> void:
 		rhythm_hit_indicator_label.text = ""
 	if Gamestate.combat_dodge_phase == true:
 		pass
-
-
-func start_rhythm_map(delta):
-	var t3: float = 0.0
-	t3 = delta * 250
-	hitcircle.position = hitcircle_current_position.lerp(hitcircle_default_position, t3)
 
 
 var player_moved = false
@@ -216,7 +213,7 @@ func get_hit_score():
 		#await get_tree().create_timer(0.8).timeout
 		rhythm_hit_counter += 1
 		#rhythm_hit_indicator_label.text = ""
-		current_rhythm_circle.play("miss")
+		#current_rhythm_circle.play("miss")
 
 
 
