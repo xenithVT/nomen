@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bdxyrcqo3ldum"]
 
 [ext_resource type="Script" uid="uid://cmvs07lmu2702" path="res://script/combat_ui.gd" id="1_4c0xa"]
-[ext_resource type="Theme" uid="uid://c2sjea6m376xo" path="res://art/combat_theme.theme" id="2_i6rcb"]
+[ext_resource type="Theme" uid="uid://c0wd4p83mvjqw" path="res://art/menu_item.theme" id="2_rfyff"]
+[ext_resource type="PackedScene" uid="uid://cy23l7oa454u5" path="res://node/dialogueballoon_combat.tscn" id="3_cd68q"]
 
 [node name="combat_ui" type="CanvasLayer" unique_id=786580201]
 script = ExtResource("1_4c0xa")
@@ -17,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_i6rcb")
+theme = ExtResource("2_rfyff")
 
 [node name="margin_fight_ui" type="MarginContainer" parent="Control" unique_id=1729014468]
 layout_mode = 1
@@ -90,6 +91,7 @@ theme_override_constants/margin_bottom = 8
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/margin_labels/MarginContainer" unique_id=1554269017]
 layout_mode = 2
 theme_override_constants/separation = 32
+alignment = 1
 
 [node name="label_player_hp" type="Label" parent="Control/margin_labels/MarginContainer/HBoxContainer" unique_id=2057772221]
 layout_mode = 2
@@ -110,45 +112,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 256
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_left = 86
+theme_override_constants/margin_top = 280
+theme_override_constants/margin_right = 86
 theme_override_constants/margin_bottom = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/container_player_options" unique_id=368447985]
 layout_mode = 2
 
-[node name="container_buttons" type="HBoxContainer" parent="Control/container_player_options/PanelContainer" unique_id=1055120989]
+[node name="MarginContainer" type="MarginContainer" parent="Control/container_player_options/PanelContainer" unique_id=1491471448]
 layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="button_fight" type="Button" parent="Control/container_player_options/PanelContainer/container_buttons" unique_id=586930786]
+[node name="container_buttons" type="HBoxContainer" parent="Control/container_player_options/PanelContainer/MarginContainer" unique_id=1055120989]
+layout_mode = 2
+alignment = 1
+
+[node name="button_fight" type="Button" parent="Control/container_player_options/PanelContainer/MarginContainer/container_buttons" unique_id=586930786]
 layout_mode = 2
 focus_neighbor_left = NodePath("../button_convert")
 focus_neighbor_right = NodePath("../button_speak")
 theme_override_font_sizes/font_size = 32
 text = "fight"
 
-[node name="button_speak" type="Button" parent="Control/container_player_options/PanelContainer/container_buttons" unique_id=1369729113]
+[node name="button_speak" type="Button" parent="Control/container_player_options/PanelContainer/MarginContainer/container_buttons" unique_id=1369729113]
 layout_mode = 2
 focus_neighbor_left = NodePath("../button_fight")
 focus_neighbor_right = NodePath("../button_item")
 theme_override_font_sizes/font_size = 32
 text = "speak"
 
-[node name="button_item" type="Button" parent="Control/container_player_options/PanelContainer/container_buttons" unique_id=908000027]
+[node name="button_item" type="Button" parent="Control/container_player_options/PanelContainer/MarginContainer/container_buttons" unique_id=908000027]
 layout_mode = 2
 focus_neighbor_left = NodePath("../button_speak")
 focus_neighbor_right = NodePath("../button_convert")
 theme_override_font_sizes/font_size = 32
 text = "item"
 
-[node name="button_convert" type="Button" parent="Control/container_player_options/PanelContainer/container_buttons" unique_id=1934364513]
+[node name="button_convert" type="Button" parent="Control/container_player_options/PanelContainer/MarginContainer/container_buttons" unique_id=1934364513]
 layout_mode = 2
 focus_neighbor_left = NodePath("../button_item")
 focus_neighbor_right = NodePath("../button_fight")
 theme_override_font_sizes/font_size = 32
 text = "convert"
 
+[node name="ExampleBalloon" parent="Control/container_player_options/PanelContainer/MarginContainer" unique_id=1753511599 instance=ExtResource("3_cd68q")]
+visible = false
+
 [node name="audiostreamplayer_combat" type="AudioStreamPlayer" parent="." unique_id=201093328]
 
-[connection signal="button_down" from="Control/container_player_options/PanelContainer/container_buttons/button_fight" to="." method="_on_button_fight_button_down"]
+[connection signal="button_down" from="Control/container_player_options/PanelContainer/MarginContainer/container_buttons/button_fight" to="." method="_on_button_fight_button_down"]

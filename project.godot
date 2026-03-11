@@ -51,6 +51,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 hurtbox=""
 rhythm_circle=""
+miss_window=""
 
 [input]
 

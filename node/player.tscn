@@ -302,6 +302,7 @@ wall_min_slide_angle = 0.13962634
 script = ExtResource("1_onrkg")
 
 [node name="scene_transition" parent="." unique_id=2065935839 instance=ExtResource("2_dsjly")]
+visible = false
 
 [node name="canvas_pausemenu" parent="." unique_id=1660309162 instance=ExtResource("2_5qpld")]
 visible = false

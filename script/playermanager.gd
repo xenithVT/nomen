@@ -7,6 +7,7 @@ var grass_power = false
 var player_health: int = 100
 var default_player_health: int = 100
 var player_spirit: int = 100
+var player_defense: int = 1
 var xp = 0
 var lvl = 0
 

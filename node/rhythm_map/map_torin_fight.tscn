@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxb48tyy2dthn" path="res://node/rhythm_circle_node.tscn" id="1_8pjcq"]
 [ext_resource type="AudioStream" uid="uid://d3ybeef2mveby" path="res://audio/combat/metronome.wav" id="2_anis1"]
+[ext_resource type="AudioStream" uid="uid://ckdjxky5tff2t" path="res://audio/music/fight/fight_torin.wav" id="2_gvd80"]
 
 [node name="map_torin_fight" type="Node2D" unique_id=2043744703]
 position = Vector2(640, 96)
@@ -11,7 +12,7 @@ position = Vector2(640, 96)
 [node name="all_rhythm_circles" type="Node2D" parent="." unique_id=2079594774]
 
 [node name="rhythm_circle" parent="all_rhythm_circles" unique_id=443032255 instance=ExtResource("1_8pjcq")]
-position = Vector2(47, 0)
+position = Vector2(39, 0)
 
 [node name="rhythm_circle2" parent="all_rhythm_circles" unique_id=1318940917 instance=ExtResource("1_8pjcq")]
 position = Vector2(288, 0)
@@ -23,6 +24,7 @@ position = Vector2(408, 0)
 position = Vector2(528, 0)
 
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=1349638168]
+stream = ExtResource("2_gvd80")
 volume_db = -16.0
 
 [node name="metronome" type="AudioStreamPlayer" parent="." unique_id=1772072626]

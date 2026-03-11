@@ -5,7 +5,7 @@ class_name CombatScene
 @onready var hp_label = $Control/margin_labels/MarginContainer/HBoxContainer/label_player_hp
 @onready var sp_label = $Control/margin_labels/MarginContainer/HBoxContainer/label_player_power
 @onready var container_buttons = $Control/container_player_options/PanelContainer/container_buttons
-@onready var button_fight = $Control/container_player_options/PanelContainer/container_buttons/button_fight
+@onready var button_fight = $Control/container_player_options/PanelContainer/MarginContainer/container_buttons/button_fight
 @onready var audio_stream_player = $audiostreamplayer_combat
 var buttons_focused = true
 
