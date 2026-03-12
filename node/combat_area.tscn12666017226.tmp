@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bdxyrcqo3ldum"]
+
+[ext_resource type="Script" uid="uid://cmvs07lmu2702" path="res://script/combat_scene.gd" id="1_4c0xa"]
+[ext_resource type="Theme" uid="uid://c2sjea6m376xo" path="res://art/combat_theme.theme" id="2_i6rcb"]
+
+[node name="CombatScene" type="CanvasLayer" unique_id=786580201]
+script = ExtResource("1_4c0xa")
+metadata/_custom_type_script = "uid://cmvs07lmu2702"
+
+[node name="Control" type="Control" parent="." unique_id=1659181954]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_i6rcb")
+
+[node name="margin_playable_area" type="MarginContainer" parent="Control" unique_id=1842664623]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 275
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 275
+theme_override_constants/margin_bottom = 125
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/margin_playable_area" unique_id=1402274726]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/margin_playable_area/PanelContainer" unique_id=647899798]
+layout_mode = 2
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="margin_labels" type="MarginContainer" parent="Control" unique_id=536620967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 210
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 115
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/margin_labels" unique_id=618817233]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/margin_labels/MarginContainer" unique_id=1554269017]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="label_player_hp" type="Label" parent="Control/margin_labels/MarginContainer/HBoxContainer" unique_id=2057772221]
+layout_mode = 2
+text = "hp 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_player_power" type="Label" parent="Control/margin_labels/MarginContainer/HBoxContainer" unique_id=1477196522]
+layout_mode = 2
+text = "sp 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="container_player_options" type="MarginContainer" parent="Control" unique_id=594612887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/container_player_options" unique_id=368447985]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/container_player_options/PanelContainer" unique_id=1055120989]
+layout_mode = 2
+
+[node name="button_fight" type="Button" parent="Control/container_player_options/PanelContainer/HBoxContainer" unique_id=586930786]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "fight!"
+
+[node name="button_speak" type="Button" parent="Control/container_player_options/PanelContainer/HBoxContainer" unique_id=1369729113]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "speak"
+
+[node name="button_item" type="Button" parent="Control/container_player_options/PanelContainer/HBoxContainer" unique_id=908000027]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "item"
+
+[node name="button_convert" type="Button" parent="Control/container_player_options/PanelContainer/HBoxContainer" unique_id=1934364513]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "convert"
+
+[node name="audiostreamplayer_combat" type="AudioStreamPlayer" parent="." unique_id=201093328]

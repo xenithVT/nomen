@@ -1,0 +1,8 @@
+~ start
+...: look inside box?
+
+- yes
+	...: you struggle to open the box but fail.
+- no
+set Gamestate.in_dialogue = false
+=> END

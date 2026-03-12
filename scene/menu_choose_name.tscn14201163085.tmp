@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://cy0q4sx6lu05n"]
+
+[ext_resource type="Script" uid="uid://cva5adfqrjily" path="res://scene/menu_choose_name.gd" id="1_50iwo"]
+[ext_resource type="PackedScene" uid="uid://brt2qebpvtnbp" path="res://node/transitions.tscn" id="2_f2lt0"]
+[ext_resource type="Theme" uid="uid://c0nldtu83ngrl" path="res://art/menu_theme.theme" id="2_kleoy"]
+[ext_resource type="PackedScene" uid="uid://bg7tc8s88tx4i" path="res://node/dialogue_balloon_menu.tscn" id="3_kleoy"]
+
+[node name="menu_choose_name" type="Node2D" unique_id=171847372]
+script = ExtResource("1_50iwo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1994839677]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1877674509]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("2_kleoy")
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer" unique_id=1328739524]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 155
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 155
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/MarginContainer" unique_id=1346706596]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/MarginContainer/Panel" unique_id=880519760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/MarginContainer/MarginContainer/Panel/MarginContainer" unique_id=1495460992]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("2_kleoy")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+placeholder_text = "name"
+max_length = 8
+context_menu_enabled = false
+emoji_menu_enabled = false
+backspace_deletes_composite_character_enabled = true
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+caret_blink = true
+text_direction = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer" unique_id=854757099]
+layout_mode = 2
+theme = ExtResource("2_kleoy")
+theme_override_constants/margin_left = -11
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_bottom = 8
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/MarginContainer2" unique_id=726442723]
+layout_mode = 2
+
+[node name="container_button" type="HBoxContainer" parent="CanvasLayer/MarginContainer/MarginContainer2/Control" unique_id=521281823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="button_no" type="Button" parent="CanvasLayer/MarginContainer/MarginContainer2/Control/container_button" unique_id=976651743]
+layout_mode = 2
+focus_neighbor_left = NodePath("../button_yes")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../button_yes")
+focus_neighbor_bottom = NodePath(".")
+text = "cancel"
+
+[node name="button_yes" type="Button" parent="CanvasLayer/MarginContainer/MarginContainer2/Control/container_button" unique_id=1559747241]
+layout_mode = 2
+focus_neighbor_left = NodePath("../button_no")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../button_no")
+focus_neighbor_bottom = NodePath(".")
+text = "confirm"
+
+[node name="dialogue_balloon_menu" parent="CanvasLayer/MarginContainer/MarginContainer2/Control/container_button" unique_id=1753511599 instance=ExtResource("3_kleoy")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1407305357]
+volume_db = -8.0
+
+[node name="canvas_transitions" parent="." unique_id=2065935839 instance=ExtResource("2_f2lt0")]
+
+[connection signal="text_changed" from="CanvasLayer/MarginContainer/MarginContainer/Panel/MarginContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="CanvasLayer/MarginContainer/MarginContainer/Panel/MarginContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/MarginContainer2/Control/container_button/button_no" to="." method="_on_button_no_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/MarginContainer2/Control/container_button/button_yes" to="." method="_on_button_yes_button_down"]

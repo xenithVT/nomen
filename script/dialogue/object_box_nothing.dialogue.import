@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dy8nw22fbyttw"
+path="res://.godot/imported/object_box_nothing.dialogue-faa150a38412db54d7ad482d3402fd0d.tres"
+
+[deps]
+
+source_file="res://script/dialogue/object_box_nothing.dialogue"
+dest_files=["res://.godot/imported/object_box_nothing.dialogue-faa150a38412db54d7ad482d3402fd0d.tres"]
+
+[params]
+
+defaults=true

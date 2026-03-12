@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://e7uvw1d8br0j"]
+
+[ext_resource type="Theme" uid="uid://cayb2mn5ax200" path="res://art/menu/theme.tres" id="1_5xiob"]
+[ext_resource type="FontFile" uid="uid://pt38168qk38f" path="res://art/font/ByteBounce.ttf" id="1_ifx73"]
+[ext_resource type="Script" uid="uid://lhwg275j5qt6" path="res://scene/menu_main.gd" id="1_w704d"]
+[ext_resource type="PackedScene" uid="uid://brt2qebpvtnbp" path="res://node/transitions.tscn" id="4_vpvlp"]
+[ext_resource type="Theme" uid="uid://c0nldtu83ngrl" path="res://art/menu_theme.theme" id="5_fexwy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5xiob"]
+font = ExtResource("1_ifx73")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_fexwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/update_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d6eoi"]
+resource_name = "update_available"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/update_label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sm3bj"]
+_data = {
+&"RESET": SubResource("Animation_fexwy"),
+&"update_available": SubResource("Animation_d6eoi")
+}
+
+[node name="menu_main" type="Node2D" unique_id=1928298170]
+script = ExtResource("1_w704d")
+
+[node name="Panel" type="Panel" parent="." unique_id=1447240048]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("5_fexwy")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=651225806]
+
+[node name="label_version" type="Label" parent="." unique_id=306968050]
+offset_left = 537.0
+offset_top = 316.0
+offset_right = 638.0
+offset_bottom = 361.0
+theme = ExtResource("5_fexwy")
+theme_override_font_sizes/font_size = 32
+text = "v0.0"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1902772161]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme = ExtResource("1_5xiob")
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 380
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=228290301]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=270594057]
+layout_mode = 2
+text = "nomen"
+label_settings = SubResource("LabelSettings_5xiob")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=189466249]
+offset_left = -1.0
+offset_top = 130.0
+offset_right = 623.0
+offset_bottom = 354.0
+theme = ExtResource("1_5xiob")
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 380
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=89750534]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="start" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=249912514]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_next = NodePath("../load")
+focus_previous = NodePath("../quit")
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_font_sizes/font_size = 32
+text = "start new game"
+
+[node name="load" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1418656831]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "load"
+
+[node name="options" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1449895493]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "options"
+
+[node name="quit" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1978662167]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=641014060]
+volume_db = -8.0
+
+[node name="canvas_transitions" parent="." unique_id=2065935839 instance=ExtResource("4_vpvlp")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1237623151]
+libraries/ = SubResource("AnimationLibrary_sm3bj")
+autoplay = &"update_available"
+
+[node name="Control" type="Control" parent="." unique_id=553431971]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="update_label" type="Label" parent="Control" unique_id=1974771635]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 55.99999
+offset_right = 594.0
+offset_bottom = 78.999985
+rotation = 0.3647738
+pivot_offset = Vector2(100, 10)
+theme = ExtResource("5_fexwy")
+theme_override_colors/font_color = Color(0.8039216, 0.7176471, 0.37254903, 1)
+theme_override_font_sizes/font_size = 32
+text = "update available!"
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,37 @@
+~ start
+match Dialoguestate.pipcounter
+	when 0
+		pip: hi hi! what's your name?
+		- {{Playermanager.player_name}}
+		pip: wha- [wait=1][shake]{{Playermanager.player_name}}!?[/shake]
+		pip: like... [wave]THE[/wave] {{Playermanager.player_name}}?
+		pip: you're finally awake!
+		pip: well, obviously you're alive, i'm looking at you.
+		pip: ...and talking to you... but i still can't believe it.
+		pip: anyways, do you know what's going on?
+		- yes
+			pip: what? okay clearly you don't know what i'm talking about. anyways,
+			set Dialoguestate.pipangercounter +=1
+			set Dialoguestate.pipcounter += 1
+			=> explanation
+		- no
+			pip: okay i'll try to explain it.
+			set Dialoguestate.pipcounter += 1
+			=> explanation
+	when 1
+		pip: hi {{Playermanager.player_name}}
+		
+	else
+		pip: hi {{Playermanager.player_name}}
+set Gamestate.in_dialogue = false
+=> END
+
+~ explanation
+pip: Terra is... dead. [wait=1] i think.
+pip: she's become stone. everyone's become stone.
+pip: wait. sorry for your loss by the way, or maybe not..?
+pip: either way your mom is dead or stone so... i'm sorry about that.
+pip: Terra and Petra, the Goddess of Stone, got into a fight and well, Terra lost, so her powers aren't working anymore
+pip: everything that had life is... stone now.
+set Gamestate.in_dialogue = false
+=> END

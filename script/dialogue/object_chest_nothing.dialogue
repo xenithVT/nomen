@@ -1,0 +1,8 @@
+~ start
+...: open chest?
+
+- yes
+	...: the chest is empty aside from some spider webs.
+- no
+set Gamestate.in_dialogue = false
+=> END

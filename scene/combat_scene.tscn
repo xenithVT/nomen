@@ -1,0 +1,133 @@
+[gd_scene format=4 uid="uid://di42bbkmcwffx"]
+
+[ext_resource type="Script" uid="uid://idruebu6qp4u" path="res://scene/combat_scene.gd" id="1_8fdq7"]
+[ext_resource type="PackedScene" uid="uid://c8o06hxyvl5d7" path="res://node/rhythm_map/map_torin_fight.tscn" id="2_5h52y"]
+[ext_resource type="PackedScene" uid="uid://e7kbo1wgq4l7" path="res://node/map_torin_dodge.tscn" id="2_50f6i"]
+[ext_resource type="Texture2D" uid="uid://cwnq1n4ax6ebi" path="res://art/tileset/combat_walls.png" id="2_q28wb"]
+[ext_resource type="PackedScene" uid="uid://vuknjnsgee1o" path="res://node/player_combat.tscn" id="3_5et3g"]
+[ext_resource type="PackedScene" uid="uid://bdxyrcqo3ldum" path="res://node/combat_ui.tscn" id="4_5h52y"]
+[ext_resource type="Texture2D" uid="uid://c5btchipi46ii" path="res://art/sprite/combat/sprite_hitcircle.png" id="7_50f6i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyjm2"]
+texture = ExtResource("2_q28wb")
+texture_region_size = Vector2i(20, 20)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+3:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[sub_resource type="TileSet" id="TileSet_n40sy"]
+tile_size = Vector2i(20, 20)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xyjm2")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_50f6i"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5h52y"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5et3g"]
+radius = 32.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5h52y"]
+texture = ExtResource("2_q28wb")
+texture_region_size = Vector2i(20, 20)
+1:1/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_50f6i"]
+tile_size = Vector2i(20, 20)
+sources/0 = SubResource("TileSetAtlasSource_5h52y")
+
+[node name="combat_area" type="Node2D" unique_id=873178126]
+script = ExtResource("1_8fdq7")
+
+[node name="map_torin_dodge" parent="." unique_id=1288707739 instance=ExtResource("2_50f6i")]
+position = Vector2(320, -64)
+
+[node name="map_torin_fight" parent="." unique_id=2043744703 instance=ExtResource("2_5h52y")]
+
+[node name="floor" type="TileMapLayer" parent="." unique_id=775259013]
+position = Vector2(10, -144)
+tile_map_data = PackedByteArray("AAANAA8AAAABAAIAAAAOAA8AAAABAAIAAAAPAA8AAAABAAIAAAAQAA8AAAABAAIAAAARAA8AAAABAAIAAAASAA8AAAABAAIAAAATAA8AAAACAAIAAAATAAgAAAACAAAAAAASAAgAAAABAAAAAAARAAgAAAABAAAAAAAQAAgAAAABAAAAAAAPAAgAAAABAAAAAAAOAAgAAAABAAAAAAANAAgAAAABAAAAAAAMAAgAAAABAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAEAAAALAAoAAAAAAAEAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAALAA0AAAAAAAEAAAALAA4AAAAAAAEAAAALAA8AAAAAAAIAAAAMAA8AAAABAAIAAAATAA4AAAACAAEAAAATAA0AAAACAAEAAAATAAwAAAACAAEAAAATAAsAAAACAAEAAAATAAoAAAACAAEAAAATAAkAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_n40sy")
+
+[node name="player_combat" parent="." unique_id=93577965 instance=ExtResource("3_5et3g")]
+position = Vector2(320, 149)
+
+[node name="hitcircle" type="StaticBody2D" parent="." unique_id=665293502]
+position = Vector2(320, 97)
+
+[node name="Sprite2D" type="Sprite2D" parent="hitcircle" unique_id=1644717307]
+texture = ExtResource("7_50f6i")
+
+[node name="great" type="Area2D" parent="hitcircle" unique_id=760746679]
+
+[node name="collision" type="CollisionShape2D" parent="hitcircle/great" unique_id=1637828801]
+shape = SubResource("CircleShape2D_50f6i")
+debug_color = Color(0.22972167, 0.52430284, 0.9592832, 0.41960785)
+
+[node name="good" type="Area2D" parent="hitcircle" unique_id=86395465]
+
+[node name="collision" type="CollisionShape2D" parent="hitcircle/good" unique_id=368265144]
+shape = SubResource("CircleShape2D_5h52y")
+debug_color = Color(0.19467697, 0.64426744, 7.70092e-07, 0.41960785)
+
+[node name="bad" type="Area2D" parent="hitcircle" unique_id=636652689]
+
+[node name="collision" type="CollisionShape2D" parent="hitcircle/bad" unique_id=1315657473]
+shape = SubResource("CircleShape2D_5et3g")
+debug_color = Color(0.9286257, 0.27530095, 0.052972242, 0.41960785)
+
+[node name="combat_ui" parent="." unique_id=786580201 instance=ExtResource("4_5h52y")]
+
+[node name="tilemap_block" type="TileMapLayer" parent="." unique_id=1663604605]
+visible = false
+tile_map_data = PackedByteArray("AAAKAAEAAAADAAIAAAAKAAIAAAADAAIAAAAKAAMAAAADAAIAAAAKAAQAAAADAAIAAAAKAAUAAAADAAIAAAAKAAYAAAADAAIAAAAKAAcAAAADAAIAAAAKAAgAAAADAAIAAAAKAAkAAAADAAIAAAAKAAoAAAADAAIAAAAKAAsAAAADAAIAAAAKAAwAAAADAAIAAAAJAAwAAAADAAIAAAAIAAwAAAADAAIAAAAHAAwAAAADAAIAAAAGAAwAAAADAAIAAAAFAAwAAAADAAIAAAAEAAwAAAADAAIAAAADAAwAAAADAAIAAAACAAwAAAADAAIAAAABAAwAAAADAAIAAAAAAAwAAAADAAIAAAAAAAsAAAADAAIAAAAAAAoAAAADAAIAAAAAAAkAAAADAAIAAAAAAAgAAAADAAIAAAAAAAcAAAADAAIAAAAAAAYAAAADAAIAAAAAAAUAAAADAAIAAAAAAAQAAAADAAIAAAAAAAMAAAADAAIAAAAAAAIAAAADAAIAAAAAAAEAAAADAAIAAAAAAAAAAAADAAIAAAABAAAAAAADAAIAAAACAAAAAAADAAIAAAADAAAAAAADAAIAAAAEAAAAAAADAAIAAAAFAAAAAAADAAIAAAAGAAAAAAADAAIAAAAHAAAAAAADAAIAAAAIAAAAAAADAAIAAAAJAAAAAAADAAIAAAAKAAAAAAADAAIAAAALAAAAAAADAAIAAAAHAAYAAAADAAIAAAAHAAUAAAADAAIAAAAHAAQAAAADAAIAAAAHAAMAAAADAAIAAAAHAAIAAAADAAIAAAAHAAEAAAADAAIAAAAGAAEAAAADAAIAAAAFAAEAAAADAAIAAAAEAAEAAAADAAIAAAADAAEAAAADAAIAAAACAAEAAAADAAIAAAABAAEAAAADAAIAAAABAAIAAAADAAIAAAABAAMAAAADAAIAAAABAAQAAAADAAIAAAABAAUAAAADAAIAAAABAAYAAAADAAIAAAABAAcAAAADAAIAAAABAAgAAAADAAIAAAABAAkAAAADAAIAAAABAAoAAAADAAIAAAABAAsAAAADAAIAAAACAAsAAAADAAIAAAACAAoAAAADAAIAAAACAAkAAAADAAIAAAACAAgAAAADAAIAAAACAAcAAAADAAIAAAACAAYAAAADAAIAAAACAAUAAAADAAIAAAACAAQAAAADAAIAAAACAAMAAAADAAIAAAACAAIAAAADAAIAAAADAAIAAAADAAIAAAADAAMAAAADAAIAAAADAAQAAAADAAIAAAADAAUAAAADAAIAAAADAAYAAAADAAIAAAADAAcAAAADAAIAAAADAAgAAAADAAIAAAADAAkAAAADAAIAAAADAAoAAAADAAIAAAADAAsAAAADAAIAAAAEAAsAAAADAAIAAAAEAAoAAAADAAIAAAAEAAkAAAADAAIAAAAEAAgAAAADAAIAAAAEAAcAAAADAAIAAAAEAAYAAAADAAIAAAAEAAUAAAADAAIAAAAEAAQAAAADAAIAAAAEAAMAAAADAAIAAAAEAAIAAAADAAIAAAAFAAIAAAADAAIAAAAFAAMAAAADAAIAAAAFAAQAAAADAAIAAAAFAAUAAAADAAIAAAAFAAYAAAADAAIAAAAFAAcAAAADAAIAAAAFAAgAAAADAAIAAAAFAAkAAAADAAIAAAAFAAoAAAADAAIAAAAFAAsAAAADAAIAAAAGAAsAAAADAAIAAAAGAAoAAAADAAIAAAAGAAkAAAADAAIAAAAGAAgAAAADAAIAAAAGAAcAAAADAAIAAAAGAAYAAAADAAIAAAAGAAUAAAADAAIAAAAGAAQAAAADAAIAAAAGAAMAAAADAAIAAAAGAAIAAAADAAIAAAAHAAcAAAADAAIAAAAHAAgAAAADAAIAAAAHAAkAAAADAAIAAAAHAAoAAAADAAIAAAAHAAsAAAADAAIAAAAIAAsAAAADAAIAAAAIAAoAAAADAAIAAAAIAAkAAAADAAIAAAAIAAgAAAADAAIAAAAIAAcAAAADAAIAAAAIAAYAAAADAAIAAAAIAAUAAAADAAIAAAAIAAQAAAADAAIAAAAIAAMAAAADAAIAAAAIAAIAAAADAAIAAAAIAAEAAAADAAIAAAAJAAEAAAADAAIAAAAJAAIAAAADAAIAAAAJAAMAAAADAAIAAAAJAAQAAAADAAIAAAAJAAUAAAADAAIAAAAJAAYAAAADAAIAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAIAAAAJAAoAAAADAAIAAAAJAAsAAAADAAIAAAA=")
+enabled = false
+tile_set = SubResource("TileSet_50f6i")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1685824146]
+position = Vector2(320, 180)
+
+[node name="audio_fight_music" type="AudioStreamPlayer" parent="." unique_id=1008242549]
+volume_db = -2.0
+max_polyphony = 2
+
+[connection signal="area_entered" from="hitcircle/great" to="." method="_on_great_area_entered"]
+[connection signal="area_exited" from="hitcircle/great" to="." method="_on_great_area_exited"]
+[connection signal="area_entered" from="hitcircle/good" to="." method="_on_good_area_entered"]
+[connection signal="area_exited" from="hitcircle/good" to="." method="_on_good_area_exited"]
+[connection signal="area_entered" from="hitcircle/bad" to="." method="_on_bad_area_entered"]
+[connection signal="area_exited" from="hitcircle/bad" to="." method="_on_bad_area_exited"]

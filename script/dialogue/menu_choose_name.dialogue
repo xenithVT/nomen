@@ -1,0 +1,43 @@
+~ start
+menu: choose a name. [ENTER] to confirm
+=> END
+
+~ sans
+sans: wrong game pal, choose another name.
+=> END
+
+~ papyrus
+papyrus: OF COURSE. A PERFECT NAME.
+=> END
+
+~ sure
+menu: are you sure?
+=> END
+
+~ empty
+menu: name cannot be empty.
+=> END
+
+~ anima
+anima: i have to save everyone...
+=> END
+
+~ nev
+xen: i love you <3
+=> END
+
+~ chic
+good luck mom LOL
+=> END
+
+~ xen
+...
+=> END
+
+~ sorry
+you should be.
+=> END
+
+~ bug
+there's been ENOUGH of you here. ...whatever, what's one more
+=> END

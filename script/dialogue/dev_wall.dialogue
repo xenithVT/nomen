@@ -1,0 +1,5 @@
+~ start
+%1 ...: it's... [wait=1] still just a wall.
+%99 ...: it's just a wall
+set Gamestate.in_dialogue = false
+=> END

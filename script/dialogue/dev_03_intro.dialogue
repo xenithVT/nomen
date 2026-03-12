@@ -1,0 +1,4 @@
+~ start
+03: [shake rate=10.0 level=2 connected=1]greetings anima.[/shake]
+set Gamestate.in_dialogue = false
+=> END

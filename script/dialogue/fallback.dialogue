@@ -1,0 +1,19 @@
+~ start
+...: error 0. fallback conversation. you did not set a dialogue path.
+set Gamestate.in_dialogue = false
+=> END
+
+~ dialogue_path_fail
+...: error 2. fallback conversation. invalid dialogue path.
+set Gamestate.in_dialogue = false
+=> END
+
+~ dialogue_balloon_path_fail
+...: error 3. fallback conversation. invalid dialogue balloon path.
+set Gamestate.in_dialogue = false
+=> END
+
+~ generic_fail
+...: error 4. fallback conversation. generic fail.
+set Gamestate.in_dialogue = false
+=> END
