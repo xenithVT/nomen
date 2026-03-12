@@ -129,7 +129,7 @@ func apply_dialogue_line() -> void:
 		character_voice_path = "res://audio/character/%s/voice_%s.wav" % [dialogue_line.character, dialogue_line.character]
 		audio_stream_player.stream = load(character_voice_path)
 		print_debug("character voice found: ", character_voice_path)
-	else:
+	elif !ResourceLoader.exists(character_voice_path):
 		character_voice_path = "res://audio/character/%s/voice_%s.wav" % [dialogue_line.character, dialogue_line.character]
 		audio_stream_player.stream = load("res://audio/null.wav")
 		print_debug("character voice null: ", character_voice_path)

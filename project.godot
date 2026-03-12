@@ -12,13 +12,20 @@ config_version=5
 
 config/name="nomen"
 config/version="0.2"
-run/main_scene="uid://e7uvw1d8br0j"
+run/main_scene="uid://skvc0ls6tvoq"
 config/custom_user_dir_name="user://nomen"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=144
-boot_splash/bg_color=Color(0.021434637, 0.021434635, 0.021434633, 1)
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="uid://dugpo2ngqrbyg"
+config/defaults/default_clear_color=Color(0.24840015, 0.24840018, 0.24840015, 1)
+
+[audio]
+
+buses/default_bus_layout="uid://dawwaxbfjl3q2"
 
 [autoload]
 
@@ -136,10 +143,15 @@ pause_menu={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
+player_cancel={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://script/dialogue/cave_torin_start.dialogue", "res://script/dialogue/dev_03_intro.dialogue", "res://script/dialogue/dev_wall.dialogue", "res://script/dialogue/fallback.dialogue", "res://script/dialogue/object_box_nothing.dialogue", "res://script/dialogue/object_chest_nothing.dialogue", "res://script/dialogue/object_vase_nothing.dialogue", "res://script/dialogue/pip_cave_start.dialogue", "res://script/dialogue/menu_choose_name.dialogue")
+locale/translations_pot_files=PackedStringArray("res://script/dialogue/cave_torin_start.dialogue", "res://script/dialogue/dev_03_intro.dialogue", "res://script/dialogue/dev_wall.dialogue", "res://script/dialogue/fallback.dialogue", "res://script/dialogue/object_box_nothing.dialogue", "res://script/dialogue/object_chest_nothing.dialogue", "res://script/dialogue/object_vase_nothing.dialogue", "res://script/dialogue/pip_cave_start.dialogue", "res://script/dialogue/menu_choose_name.dialogue", "res://script/dialogue/game_start.dialogue")
 
 [layer_names]
 
@@ -157,4 +169,4 @@ locale/translations_pot_files=PackedStringArray("res://script/dialogue/cave_tori
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.003921569, 0.007843138, 0.011764706, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -10,15 +10,6 @@ script = ExtResource("1_50iwo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1994839677]
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1463236678]
-custom_minimum_size = Vector2(640, 360)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_kleoy")
-
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1877674509]
 anchors_preset = 15
 anchor_right = 1.0

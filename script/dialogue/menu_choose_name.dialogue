@@ -1,5 +1,5 @@
 ~ start
-menu: choose a name
+menu: choose a name. [ENTER] to confirm
 => END
 
 ~ sans
@@ -20,4 +20,24 @@ menu: name cannot be empty.
 
 ~ anima
 anima: i have to save everyone...
+=> END
+
+~ nev
+xen: i love you <3
+=> END
+
+~ chic
+good luck mom LOL
+=> END
+
+~ xen
+...
+=> END
+
+~ sorry
+you should be.
+=> END
+
+~ bug
+there's been ENOUGH of you here. ...whatever, what's one more
 => END

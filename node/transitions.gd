@@ -26,10 +26,10 @@ func no_transition():
 func fade_in():
 	self.show()
 	anim_transitions.play("fade_in")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(2).timeout
 
 
 func fade_out():
 	self.show()
 	anim_transitions.play("fade_out")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(2).timeout

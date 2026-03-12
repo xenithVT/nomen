@@ -2,10 +2,10 @@
 match Dialoguestate.pipcounter
 	when 0
 		pip: hi hi! what's your name?
-		- anima
-		pip: a-[wait=1][shake]ANIMA?!!![/shake]
-		pip: like... [wave]THE[/wave] Anima?
-		pip: you're alive?
+		- {{Playermanager.player_name}}
+		pip: wha- [wait=1][shake]{{Playermanager.player_name}}!?[/shake]
+		pip: like... [wave]THE[/wave] {{Playermanager.player_name}}?
+		pip: you're finally awake!
 		pip: well, obviously you're alive, i'm looking at you.
 		pip: ...and talking to you... but i still can't believe it.
 		pip: anyways, do you know what's going on?
@@ -19,10 +19,10 @@ match Dialoguestate.pipcounter
 			set Dialoguestate.pipcounter += 1
 			=> explanation
 	when 1
-		pip: hi Anima!
+		pip: hi {{Playermanager.player_name}}
 		
 	else
-		pip: hi Anima.
+		pip: hi {{Playermanager.player_name}}
 set Gamestate.in_dialogue = false
 => END
 

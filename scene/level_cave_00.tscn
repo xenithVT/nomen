@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cwnq1n4ax6ebi" path="res://art/tileset/combat_walls.png" id="3_d56da"]
 [ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player.tscn" id="3_qrdce"]
 [ext_resource type="Script" uid="uid://dx60irmkvmjki" path="res://script/scene_transition.gd" id="5_d56da"]
-[ext_resource type="PackedScene" uid="uid://chi2jrix7bh0y" path="res://scene/level_cave_01.tscn" id="6_2ffnx"]
 [ext_resource type="Texture2D" uid="uid://5ljnpw08155g" path="res://art/sprite/sprite_butterfly.png" id="8_kxip3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d56da"]
@@ -77,6 +76,7 @@ texture_region_size = Vector2i(20, 20)
 1:2/0 = 0
 2:2/0 = 0
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ffnx"]
 texture = ExtResource("2_q6125")
@@ -215,10 +215,16 @@ tile_map_data = PackedByteArray("AAD+/wAAAAACAAUAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAA
 tile_set = SubResource("TileSet_kxip3")
 
 [node name="walls" type="TileMapLayer" parent="level" unique_id=1990723489]
-tile_map_data = PackedByteArray("AAAFAP3/AgABAAEAAAAFAP7/AgABAAEAAAAFAP//AgABAAEAAAAFAAAAAgABAAEAAAAFAAEAAgABAAEAAAAFAAIAAgABAAIAAAAEAAIAAgABAAYAAAABAAUAAgACAAMAAAAAAAUAAgACAAMAAAD//wUAAgACAAMAAAD+/wUAAgACAAMAAAD9/wUAAgACAAMAAAD5//7/AgAAAAEAAAD5////AgAAAAEAAAD5/wAAAgAAAAEAAAD5/wIAAgAAAAIAAAD5/wEAAgAAAAEAAAD6/wIAAgACAAYAAAD7/wMAAgACAAYAAAD8/wQAAgACAAYAAAACAAQAAgABAAYAAAADAAMAAgABAAYAAAD5//3/AgAAAAEAAAABAPj/AgACAAAAAAD9//j/AgACAAAAAAAAAPj/AgACAAAAAAAAAPn/AgACAAEAAAD+//n/AgACAAEAAAD///j/AgACAAAAAAD+//j/AgACAAAAAAABAPn/AgACAAEAAAD9//n/AgACAAEAAAD9//r/AgACAAIAAAABAPr/AgACAAIAAAD+//r/AgACAAIAAAAAAPr/AgACAAIAAAADAPr/AgABAAcAAAADAPv/AgABAAgAAAADAPz/AgABAAkAAAACAPv/AgABAAkAAAD8//v/AgACAAkAAAD7//z/AgACAAkAAAD8//r/AgACAAgAAAD7//v/AgACAAgAAAD7//r/AgACAAcAAAD8//n/AgACAAcAAAACAPr/AgABAAgAAAACAPn/AgABAAcAAAD6//r/AgAAAAAAAAD7//n/AgAAAAAAAAD8//j/AgAAAAAAAAACAPj/AgABAAAAAAADAPn/AgABAAAAAAAEAPr/AgABAAAAAAAEAPv/AgABAAcAAAAEAPz/AgABAAgAAAAEAP3/AgABAAkAAAD6//v/AgACAAcAAAD6//z/AgACAAgAAAD6//3/AgACAAkAAAD5//z/AgAAAAEAAAD5//v/AgAAAAAAAAAFAPz/AgABAAEAAAAFAPv/AgABAAAAAAD6/wMAAgAAAAIAAAAEAAMAAgABAAIAAAADAAQAAgABAAIAAAACAAUAAgABAAIAAAD8/wUAAgAAAAIAAAD7/wQAAgAAAAIAAAD+//f/AQADAAIAAAD///f/AQADAAIAAAAAAPf/AQADAAIAAAD9//f/AQADAAIAAAA=")
+tile_map_data = PackedByteArray("AAAFAP3/AgABAAEAAAAFAP7/AgABAAEAAAAFAP//AgABAAEAAAAFAAAAAgABAAEAAAAFAAEAAgABAAEAAAAFAAIAAgABAAIAAAAEAAIAAgABAAYAAAABAAUAAgACAAMAAAAAAAUAAgACAAMAAAD//wUAAgACAAMAAAD+/wUAAgACAAMAAAD9/wUAAgACAAMAAAD5//7/AgAAAAEAAAD5////AgAAAAEAAAD5/wAAAgAAAAEAAAD5/wIAAgAAAAIAAAD5/wEAAgAAAAEAAAD6/wIAAgACAAYAAAD7/wMAAgACAAYAAAD8/wQAAgACAAYAAAACAAQAAgABAAYAAAADAAMAAgABAAYAAAD5//3/AgAAAAEAAAABAPj/AgACAAAAAAD9//j/AgACAAAAAAAAAPj/AgACAAAAAAAAAPn/AgACAAEAAAD+//n/AgACAAEAAAD///j/AgACAAAAAAD+//j/AgACAAAAAAABAPn/AgACAAEAAAD9//n/AgACAAEAAAD9//r/AgACAAIAAAABAPr/AgACAAIAAAD+//r/AgACAAIAAAAAAPr/AgACAAIAAAADAPr/AgABAAcAAAADAPv/AgABAAgAAAADAPz/AgABAAkAAAACAPv/AgABAAkAAAD8//v/AgACAAkAAAD7//z/AgACAAkAAAD8//r/AgACAAgAAAD7//v/AgACAAgAAAD7//r/AgACAAcAAAD8//n/AgACAAcAAAACAPr/AgABAAgAAAACAPn/AgABAAcAAAD6//r/AgAAAAAAAAD7//n/AgAAAAAAAAD8//j/AgAAAAAAAAACAPj/AgABAAAAAAADAPn/AgABAAAAAAAEAPr/AgABAAAAAAAEAPv/AgABAAcAAAAEAPz/AgABAAgAAAAEAP3/AgABAAkAAAD6//v/AgACAAcAAAD6//z/AgACAAgAAAD6//3/AgACAAkAAAD5//z/AgAAAAEAAAD5//v/AgAAAAAAAAAFAPz/AgABAAEAAAAFAPv/AgABAAAAAAD6/wMAAgAAAAIAAAAEAAMAAgABAAIAAAADAAQAAgABAAIAAAACAAUAAgABAAIAAAD8/wUAAgAAAAIAAAD7/wQAAgAAAAIAAAD+//f/AQADAAIAAAD///f/AQADAAIAAAAAAPf/AQADAAIAAAD9//f/AQADAAIAAAD///n/AQADAAIAAAA=")
+tile_set = SubResource("TileSet_kxip3")
+
+[node name="walls2_bcidkhowtofixthisshit shit" type="TileMapLayer" parent="level" unique_id=1503718982]
+z_index = 5
+tile_map_data = PackedByteArray("AAD///j/AgACAAAAAAD+//f/AQADAAIAAAD///f/AQADAAIAAAAAAPf/AQADAAIAAAABAPf/AQADAAIAAAD9//f/AQADAAIAAAABAPb/AQADAAIAAAAAAPb/AQADAAIAAAD///b/AQADAAIAAAD+//b/AQADAAIAAAD9//b/AQADAAIAAAA=")
 tile_set = SubResource("TileSet_kxip3")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="level" unique_id=136328112]
+visible = false
 color = Color(0.06620528, 0.07355177, 0.084571056, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="level" unique_id=464794273]
@@ -237,14 +243,17 @@ trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_kxip3")
 
 [node name="SceneTransition" type="Area2D" parent="level" unique_id=1248721087 groups=["scene_transition"]]
-position = Vector2(-10, -130)
+position = Vector2(-10, -147)
 script = ExtResource("5_d56da")
-next_scene_file = ExtResource("6_2ffnx")
+next_scene_path = "uid://chi2jrix7bh0y"
 metadata/_custom_type_script = "uid://dx60irmkvmjki"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level/SceneTransition" unique_id=1563722588]
 shape = SubResource("RectangleShape2D_kxip3")
 debug_color = Color(0.88, 0, 0.8213334, 0.23529412)
+
+[node name="spawn_position" type="Marker2D" parent="." unique_id=6743312]
+position = Vector2(-10, -83)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1192077995]
 

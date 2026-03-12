@@ -8,6 +8,7 @@ extends Node2D
 
 var dialogue_file = preload("res://script/dialogue/menu_choose_name.dialogue")
 @onready var dialogue_balloon = $CanvasLayer/MarginContainer/MarginContainer2/Control/container_button/dialogue_balloon_menu
+var dialogue_jump
 
 var name_text: String = ""
 var is_name_okay = false
@@ -18,12 +19,17 @@ func _ready() -> void:
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
 	anim_transition.fade_in()
 	name_line.grab_focus()
-	DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "start")
+	dialogue_balloon.start(dialogue_file, "start")
 	container_button.hide()
 
 
 func _process(delta: float) -> void:
 	pass
+
+
+func _input(event):
+	if name_line.has_focus() and event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
@@ -35,6 +41,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		audio_stream_player.stream = load("res://audio/menu/select.wav")
 		audio_stream_player.play()
 		await get_tree().create_timer(0.1).timeout
+		await dialogue_balloon.dialogue_label.finished_typing
 		container_button.show()
 		button_no.grab_focus()
 	elif !is_name_okay:
@@ -42,13 +49,13 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		audio_stream_player.stream = load("res://audio/menu/select_invalid.wav")
 		audio_stream_player.play()
 		container_button.hide()
-		await get_tree().process_frame
 		button_no.grab_focus()
 		await get_tree().create_timer(0.1).timeout
 		name_line.grab_focus()
 
 
 func _on_button_no_button_down() -> void:
+	container_button.hide()
 	audio_stream_player.stream = load("res://audio/menu/select.wav")
 	audio_stream_player.play()
 	await get_tree().create_timer(0.1).timeout
@@ -65,7 +72,7 @@ func _on_button_yes_button_down() -> void:
 		await get_tree().create_timer(1.5).timeout
 		get_tree().change_scene_to_file("res://scene/level_cave_00.tscn")
 	else:
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "change your name")
+		dialogue_balloon.start(dialogue_file, "change your name")
 		audio_stream_player.stream = load("res://audio/menu/select_invalid.wav")
 		audio_stream_player.play()
 
@@ -74,19 +81,37 @@ func name_check():
 	var name_check = name_text.strip_edges().to_lower()
 	if name_check == "sans":
 		is_name_okay = false
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "sans")
+		dialogue_balloon.start(dialogue_file, name_check)
 	elif name_check == "papyrus":
 		is_name_okay = true
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "papyrus")
-	elif name_check == "":
-		is_name_okay = false
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "empty")
+		dialogue_balloon.start(dialogue_file, name_check)
+	elif name_check == "xen":
+		is_name_okay = true
+		dialogue_balloon.start(dialogue_file, name_check)
 	elif name_check == "anima":
 		is_name_okay = true
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "anima")
+		dialogue_balloon.start(dialogue_file, name_check)
+	elif name_check == "nev":
+		is_name_okay = true
+		dialogue_balloon.start(dialogue_file, name_check)
+	elif name_check == "chic":
+		is_name_okay = true
+		dialogue_balloon.start(dialogue_file, name_check)
+	elif name_check == "sorry":
+		is_name_okay = true
+		dialogue_balloon.start(dialogue_file, name_check)
+	elif name_check == "bug":
+		is_name_okay = true
+		dialogue_balloon.start(dialogue_file, name_check)
+	elif name_check == "bugs":
+		is_name_okay = true
+		dialogue_balloon.start(dialogue_file, "bug")
+	elif name_check == "":
+		is_name_okay = false
+		dialogue_balloon.start(dialogue_file, "empty")
 	else:
 		is_name_okay = true
-		DialogueManager.show_dialogue_balloon_scene(dialogue_balloon, dialogue_file, "sure")
+		dialogue_balloon.start(dialogue_file, "sure")
 
 
 func _on_line_edit_text_changed(new_text: String) -> void:

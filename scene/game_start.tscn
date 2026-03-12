@@ -1,0 +1,367 @@
+[gd_scene format=3 uid="uid://skvc0ls6tvoq"]
+
+[ext_resource type="Script" uid="uid://d3ttbqmhukak8" path="res://scene/game_start.gd" id="1_cefgs"]
+[ext_resource type="Theme" uid="uid://c0nldtu83ngrl" path="res://art/menu_theme.theme" id="2_1cfkd"]
+[ext_resource type="Theme" uid="uid://cayb2mn5ax200" path="res://art/menu/theme.tres" id="2_quvrt"]
+[ext_resource type="Texture2D" uid="uid://310dp7mtgfye" path="res://art/menu/logo_godot.png" id="3_quvrt"]
+[ext_resource type="Texture2D" uid="uid://k17h5fpqcumw" path="res://art/menu/logo_godot_wink.png" id="4_fu21u"]
+[ext_resource type="Texture2D" uid="uid://rexjfni1617x" path="res://art/menu/sprite_sparkle.png" id="5_6nkxn"]
+
+[sub_resource type="Animation" id="Animation_fu21u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("engine_credit/Control/wink2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("engine_credit/Control/wink1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("engine_credit/Control/wink1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("engine_credit/Control/wink2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -42)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("engine_credit/Control/sparkle:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12, 12)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("engine_credit/Control/sparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, -52)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("engine_credit/Control/sparkle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("engine_credit/Control/sparkle:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6nkxn"]
+resource_name = "fade out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_quvrt"]
+resource_name = "godot_wink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("engine_credit/Control/wink2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("engine_credit/Control/wink1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("engine_credit/Control/wink1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, -64), Vector2(8, -59)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("engine_credit/Control/wink2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, -42), Vector2(8, -47)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("engine_credit/Control/sparkle:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12, 12)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("engine_credit/Control/sparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.033333335, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(12, -52), Vector2(42, -70)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("engine_credit/Control/sparkle:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.033333335, 0.06666667, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("engine_credit/Control/sparkle:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.09864599),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.35604715]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu21u"]
+_data = {
+&"RESET": SubResource("Animation_fu21u"),
+&"fade out": SubResource("Animation_6nkxn"),
+&"godot_wink": SubResource("Animation_quvrt")
+}
+
+[node name="game_start" type="Node2D" unique_id=1572144450]
+script = ExtResource("1_cefgs")
+
+[node name="Panel" type="Panel" parent="." unique_id=764201019]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_1cfkd")
+
+[node name="title" type="MarginContainer" parent="." unique_id=1917217063]
+visible = false
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_quvrt")
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="RichTextLabel" type="RichTextLabel" parent="title" unique_id=1460307988]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+text = "nomen."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="engine_credit" type="MarginContainer" parent="." unique_id=1423236722]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_quvrt")
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Control" type="Control" parent="engine_credit" unique_id=1954358808]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="godot_logo" type="TextureRect" parent="engine_credit/Control" unique_id=371005439]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -80.0
+offset_right = 32.0
+offset_bottom = 152.0
+size_flags_horizontal = 4
+texture = ExtResource("3_quvrt")
+stretch_mode = 2
+
+[node name="wink1" type="TextureRect" parent="engine_credit/Control" unique_id=1634088789]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -64.0
+offset_right = 20.0
+offset_bottom = -52.0
+texture = ExtResource("4_fu21u")
+stretch_mode = 2
+flip_v = true
+
+[node name="wink2" type="TextureRect" parent="engine_credit/Control" unique_id=2132036116]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -42.0
+offset_right = 20.0
+offset_bottom = -30.0
+texture = ExtResource("4_fu21u")
+stretch_mode = 2
+
+[node name="sparkle" type="TextureRect" parent="engine_credit/Control" unique_id=1489261436]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 28.0
+offset_top = -52.0
+offset_right = 40.0
+offset_bottom = -40.0
+texture = ExtResource("5_6nkxn")
+stretch_mode = 2
+
+[node name="text_godot_credit" type="RichTextLabel" parent="engine_credit/Control" unique_id=924876348]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -94.0
+offset_right = 256.0
+offset_bottom = 138.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+text = "made in godot"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=35644782]
+custom_minimum_size = Vector2(640, 360)
+offset_right = 676.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1352729092]
+libraries/ = SubResource("AnimationLibrary_fu21u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=50053512]
+volume_db = -8.0
+max_polyphony = 6
