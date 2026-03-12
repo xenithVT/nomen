@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://clteaydj0ojvu"]
+
+[ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player.tscn" id="1_v4ov5"]
+[ext_resource type="Theme" uid="uid://c2sjea6m376xo" path="res://art/combat_theme.theme" id="2_ttura"]
+
+[node name="level_err" type="Node2D" unique_id=1456889171]
+
+[node name="player" parent="." unique_id=1291397033 instance=ExtResource("1_v4ov5")]
+
+[node name="Label" type="Label" parent="." unique_id=20961964]
+offset_left = -92.0
+offset_top = -68.0
+offset_right = 93.0
+offset_bottom = -19.0
+theme = ExtResource("2_ttura")
+text = "if you're here...
+i fucked something up..."

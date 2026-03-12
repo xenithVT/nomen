@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://pt38168qk38f" path="res://art/font/ByteBounce.ttf" id="3_icwbi"]
 [ext_resource type="Texture2D" uid="uid://rogsefbbm7by" path="res://art/portrait/portrait_anima.png" id="3_wsy0x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl4v6"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
@@ -23,7 +23,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufjut"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcyfb"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
@@ -35,7 +35,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.14117648, 0, 0.19215687, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcbqo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14y1s"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
@@ -47,7 +47,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.14117648, 0, 0.19215687, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6i7a"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trvm6"]
 content_margin_left = 6.0
 content_margin_top = 3.0
 content_margin_right = 6.0
@@ -59,13 +59,18 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.078431375, 0, 0.11372549, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6nbm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q53mo"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 2
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font = ExtResource("3_icwbi")
@@ -79,15 +84,15 @@ Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
 Button/colors/icon_normal_color = Color(1, 1, 1, 0)
 Button/icons/icon = ExtResource("2_pl4v6")
-Button/styles/disabled = SubResource("StyleBoxFlat_235ry")
-Button/styles/focus = SubResource("StyleBoxFlat_ufjut")
-Button/styles/hover = SubResource("StyleBoxFlat_fcbqo")
-Button/styles/normal = SubResource("StyleBoxFlat_t6i7a")
+Button/styles/disabled = SubResource("StyleBoxFlat_pl4v6")
+Button/styles/focus = SubResource("StyleBoxFlat_hcyfb")
+Button/styles/hover = SubResource("StyleBoxFlat_14y1s")
+Button/styles/normal = SubResource("StyleBoxFlat_trvm6")
 MarginContainer/constants/margin_bottom = 4
 MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 4
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_i6nbm")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_q53mo")
 
 [sub_resource type="Animation" id="Animation_i6nbm"]
 resource_name = "progress"

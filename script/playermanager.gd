@@ -10,6 +10,7 @@ var player_spirit: int = 100
 var player_defense: int = 1
 var player_xp = 0
 var player_lvl = 1
+var player_name: String = ""
 
 # xp calculation
 var player_xp_for_next_lvl = 100

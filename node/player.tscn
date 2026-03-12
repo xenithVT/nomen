@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xsrkuva4i6lq" path="res://script/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://efhtkh8mhpot" path="res://node/pause_menu.tscn" id="2_5qpld"]
-[ext_resource type="PackedScene" uid="uid://brt2qebpvtnbp" path="res://node/scene_transition.tscn" id="2_dsjly"]
+[ext_resource type="PackedScene" uid="uid://brt2qebpvtnbp" path="res://node/transitions.tscn" id="2_dsjly"]
 [ext_resource type="Script" uid="uid://eqja0571rxni" path="res://node/hitbox_player.gd" id="2_me0cc"]
 [ext_resource type="Texture2D" uid="uid://b0qm6p00yde34" path="res://art/sprite/character/anima/anima_head.png" id="4_3bvod"]
 [ext_resource type="Texture2D" uid="uid://cddupoq81ldy8" path="res://art/sprite/sprite_light.png" id="4_q2goq"]
@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b13kgtujf6tpw" path="res://art/sprite/character/anima/anima_left_arm.png" id="7_5qpld"]
 [ext_resource type="Texture2D" uid="uid://d0fhss8omvxwb" path="res://art/sprite/character/anima/anima_right_leg.png" id="8_dsjly"]
 [ext_resource type="Texture2D" uid="uid://u7gl5q4oglyt" path="res://art/sprite/character/anima/anima_left_leg.png" id="9_ctckx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(18, 12)
+[ext_resource type="Texture2D" uid="uid://dhi0y28xognim" path="res://art/sprite/sprite_particle_grass.png" id="12_ctckx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bms3g"]
 size = Vector2(18, 50)
@@ -40,6 +38,10 @@ func player_movement(_delta):
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me0cc"]
 size = Vector2(17.5, 18)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ctckx"]
+radius = 5.0
+height = 18.0
 
 [sub_resource type="Animation" id="Animation_5qpld"]
 length = 0.001
@@ -295,21 +297,23 @@ _data = {
 &"down_walk": SubResource("Animation_3d4p8")
 }
 
-[node name="player" type="CharacterBody2D" unique_id=1291397033]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifhe4"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 1.15
+
+[node name="player" type="CharacterBody2D" unique_id=1291397033 groups=["player"]]
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.13962634
 script = ExtResource("1_onrkg")
 
-[node name="scene_transition" parent="." unique_id=2065935839 instance=ExtResource("2_dsjly")]
+[node name="canvas_transitions" parent="." unique_id=2065935839 instance=ExtResource("2_dsjly")]
 visible = false
 
 [node name="canvas_pausemenu" parent="." unique_id=1660309162 instance=ExtResource("2_5qpld")]
 visible = false
-
-[node name="collision_player" type="CollisionShape2D" parent="." unique_id=872042676]
-position = Vector2(0, 26)
-shape = SubResource("RectangleShape2D_hqtel")
 
 [node name="hitbox_player" type="Area2D" parent="." unique_id=1981009714]
 position = Vector2(0, 7)
@@ -358,6 +362,11 @@ texture = ExtResource("6_3d4p8")
 [node name="sprite_player_left_arm" type="Sprite2D" parent="player_sprites" unique_id=2095676538]
 texture = ExtResource("7_5qpld")
 
+[node name="collision_player" type="CollisionShape2D" parent="." unique_id=872042676]
+position = Vector2(0, 27)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ctckx")
+
 [node name="animation_player" type="AnimationPlayer" parent="." unique_id=1554493809]
 libraries/ = SubResource("AnimationLibrary_5qpld")
 
@@ -373,7 +382,7 @@ texture_scale = 0.1
 
 [node name="light_player" type="PointLight2D" parent="." unique_id=860183195]
 position = Vector2(0, 21)
-color = Color(0.8039216, 0.7176471, 0.37254903, 1)
+color = Color(0.8352941, 0.827451, 0.75686276, 1)
 blend_mode = 2
 shadow_enabled = true
 shadow_filter = 2
@@ -385,5 +394,16 @@ texture_scale = 0.75
 volume_db = -16.0
 max_polyphony = 32
 
+[node name="particle_grass" type="GPUParticles2D" parent="." unique_id=1529209666]
+visible = false
+z_index = -1
+position = Vector2(0, 26)
+emitting = false
+amount = 128
+texture = ExtResource("12_ctckx")
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_ifhe4")
+
+[connection signal="area_entered" from="hitbox_player" to="." method="_on_hitbox_player_area_entered"]
 [connection signal="area_entered" from="pivot/area_interact_player" to="." method="_on_area_interact_player_area_entered"]
 [connection signal="area_exited" from="pivot/area_interact_player" to="." method="_on_area_interact_player_area_exited"]

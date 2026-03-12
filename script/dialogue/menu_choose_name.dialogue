@@ -1,0 +1,23 @@
+~ start
+menu: choose a name
+=> END
+
+~ sans
+sans: wrong game pal, choose another name.
+=> END
+
+~ papyrus
+papyrus: OF COURSE. A PERFECT NAME.
+=> END
+
+~ sure
+menu: are you sure?
+=> END
+
+~ empty
+menu: name cannot be empty.
+=> END
+
+~ anima
+anima: i have to save everyone...
+=> END

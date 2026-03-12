@@ -50,13 +50,13 @@ mouse_filter = 2
 layout_mode = 2
 text = "Anima"
 
-[node name="label_character_lvl" type="Label" parent="MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=893404052]
-layout_mode = 2
-text = "lvl: 1"
-
 [node name="label_character_health" type="Label" parent="MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=689495384]
 layout_mode = 2
 text = "hp: ???"
+
+[node name="label_character_lvl" type="Label" parent="MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=893404052]
+layout_mode = 2
+text = "lvl: 1"
 
 [node name="container_button" type="VBoxContainer" parent="MarginContainer/menu_options/MarginContainer/HBoxContainer" unique_id=153393767]
 layout_mode = 2
@@ -117,18 +117,6 @@ mouse_filter = 2
 layout_mode = 2
 text = "Anima"
 
-[node name="label_character_lvl" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=43335243]
-layout_mode = 2
-text = "lvl: ??"
-
-[node name="label_character_xp" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1495288479]
-layout_mode = 2
-text = "xp: ???"
-
-[node name="label_character_def" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=412016928]
-layout_mode = 2
-text = "def: ???"
-
 [node name="label_character_health" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1811173409]
 layout_mode = 2
 text = "hp: ???"
@@ -136,6 +124,18 @@ text = "hp: ???"
 [node name="label_character_spirit" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1607304089]
 layout_mode = 2
 text = "sp: ???"
+
+[node name="label_character_def" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=412016928]
+layout_mode = 2
+text = "def: ???"
+
+[node name="label_character_lvl" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=43335243]
+layout_mode = 2
+text = "lvl: ??"
+
+[node name="label_character_xp" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1495288479]
+layout_mode = 2
+text = "xp: ???"
 
 [node name="menu_hint" type="Label" parent="MarginContainer/menu_stats/MarginContainer/VBoxContainer" unique_id=1478203978]
 layout_mode = 2

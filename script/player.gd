@@ -8,6 +8,7 @@ var last_direction := Vector2.DOWN
 var debug_shown = false
 @onready var pivot = $pivot
 @onready var pause_menu = $canvas_pausemenu
+@onready var anim_transition = $canvas_transitions
 var target_angle: float
 var interact_target = null
 @onready var health = Playermanager.player_health
@@ -17,6 +18,7 @@ var interact_target = null
 # start functions
 func _ready():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+	anim_transition.fade_in()
 # ---------------
 
 
@@ -43,6 +45,14 @@ func _on_area_interact_player_area_exited(area: Area2D) -> void:
 		interact_target = null
 		#print_debug(area)
 # ---------------
+
+
+# scene transitions
+func _on_hitbox_player_area_entered(area: Area2D) -> void:
+	if area.is_in_group("scene_transition"):
+		area.scene_transition()
+	else:
+		pass
 
 
 # handle input

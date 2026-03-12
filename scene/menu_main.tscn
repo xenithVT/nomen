@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://cayb2mn5ax200" path="res://art/menu/theme.tres" id="1_5xiob"]
 [ext_resource type="FontFile" uid="uid://pt38168qk38f" path="res://art/font/ByteBounce.ttf" id="1_ifx73"]
 [ext_resource type="Script" uid="uid://lhwg275j5qt6" path="res://scene/menu_main.gd" id="1_w704d"]
+[ext_resource type="PackedScene" uid="uid://brt2qebpvtnbp" path="res://node/transitions.tscn" id="4_vpvlp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5xiob"]
 font = ExtResource("1_ifx73")
@@ -88,7 +89,9 @@ theme_override_font_sizes/font_size = 32
 text = "quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=641014060]
-volume_db = -16.0
+volume_db = -8.0
+
+[node name="canvas_transitions" parent="." unique_id=2065935839 instance=ExtResource("4_vpvlp")]
 
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/load" to="." method="_on_load_pressed"]

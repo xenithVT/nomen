@@ -15,6 +15,8 @@ var game_paused = false
 @onready var player = get_parent()
 @onready var audio_stream_player = player.get_node("audiostreamplayer_player")
 
+@onready var label_name_options = $MarginContainer/menu_options/MarginContainer/HBoxContainer/VBoxContainer2/label_character_name
+@onready var label_name = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_name
 @onready var label_hp = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_health
 @onready var label_lvl = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_lvl
 @onready var label_sp = $MarginContainer/menu_stats/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/label_character_spirit
@@ -29,6 +31,7 @@ var current_menu = "options"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	label_name_options.text = str(Playermanager.player_name)
 	menu_options.show()
 	menu_stats.hide()
 	menu_items.hide()
@@ -67,6 +70,7 @@ func _unhandled_input(event):
 
 
 func refresh_stats():
+	label_name.text = str(Playermanager.player_name)
 	label_lvl.text = "lvl: " + str(Playermanager.player_lvl)
 	label_hp.text = "hp: " + str(Playermanager.player_health)
 	label_sp.text = "sp: " + str(Playermanager.player_spirit)
