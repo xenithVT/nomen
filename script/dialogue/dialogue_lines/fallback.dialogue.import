@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3n1hqb1j6j53"
+path="res://.godot/imported/fallback.dialogue-c72139064362ce680d6ca5c7c9d34b61.tres"
+
+[deps]
+
+source_file="res://script/dialogue/dialogue_lines/fallback.dialogue"
+dest_files=["res://.godot/imported/fallback.dialogue-c72139064362ce680d6ca5c7c9d34b61.tres"]
+
+[params]
+
+defaults=true

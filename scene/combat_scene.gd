@@ -5,14 +5,20 @@ extends Node2D
 
 @onready var hitcircle = $hitcircle
 @onready var audio_fight_music = $audio_fight_music
+@onready var audio_fight_sfx = $audio_fight_sfx
+
 var rhythm_map_path: String
 var rhythm_map_scene: PackedScene
 var rhythm_map: Node2D
 var rhythm_map_song
 var rhythm_map_start = false
 var current_rhythm_circle
+var current_rhythm_circle_miss_area
 var metronome_path
 var bpm_timer
+var bpm
+
+@onready var anim_hitcircle = $anim_hitcircle
 @onready var rhythm_hit_indicator_label = $combat_ui/Control/margin_fight_ui/VBoxContainer/label_hit_indicator
 @onready var rhythm_hit_dmg_label = $combat_ui/Control/margin_fight_ui/VBoxContainer/label_hit_dmg
 @onready var metronome_sound = preload("res://audio/combat/metronome.wav")
@@ -22,6 +28,8 @@ var bpm_timer
 
 var player_current_position: Vector2 = Vector2(320, 97)
 var player_default_position: Vector2 = Vector2(320, 97)
+var player_left_position: Vector2 = Vector2(280, 97)
+var player_right_position: Vector2 = Vector2(360, 97)
 var tilemap_default_position: Vector2 = Vector2(10, -144)
 var tilemap_hide_position: Vector2 = Vector2(-518, -144)
 var player_hide_position: Vector2 = Vector2(320, 149)
@@ -45,12 +53,14 @@ var metronome_enabled
 
 
 func _ready() -> void:
-	metronome_enabled = Gamestate.metronome_enabled
+	metronome_enabled = Gamestate.option_metronome_enabled
 	print("combat opponent is: ", Gamestate.combat_opponent)
 	# get rhythm map and song
-	rhythm_map_path = "res://node/rhythm_map/map_%s_fight.tscn" % Gamestate.combat_opponent
+	rhythm_map_path = "res://node/combat/rhythm_map/map_%s_fight.tscn" % Gamestate.combat_opponent
 	rhythm_map_song = "res://audio/music/fight/fight_%s.wav" % Gamestate.combat_opponent
 	find_valid_paths()
+	await get_tree().process_frame
+	audio_fight_music.play()
 	rhythm_map_start = true
 	#-
 	Gamestate.combat_dodge_phase = true
@@ -62,23 +72,28 @@ func _ready() -> void:
 
 
 func find_valid_paths():
-	if ResourceLoader.exists(rhythm_map_path):
-		rhythm_map_scene = load(rhythm_map_path)
-		print_debug("FOUND - rhythm map: ", rhythm_map_path)
-		add_child(rhythm_map_scene.instantiate())
-		rhythm_map = get_node("map_%s_fight" % Gamestate.combat_opponent)
-		print(rhythm_map)
-		metronome_path = get_node("map_%s_fight/metronome" % Gamestate.combat_opponent)
-		bpm_timer = get_node("map_%s_fight/bpm_timer" % Gamestate.combat_opponent)
-	else:
+	# get rhythm map
+	if !ResourceLoader.exists(rhythm_map_path):
 		push_error("ERR NOT FOUND - rhythm map or components: " + rhythm_map_path)
-	if ResourceLoader.exists(rhythm_map_song):
-		audio_fight_music.stream = load(rhythm_map_song)
-		audio_fight_music.play()
-		print_debug("FOUND - rhythm map song: ", rhythm_map_song)
-	else:
+		return
+
+	rhythm_map_scene = load(rhythm_map_path)
+	print_debug("FOUND - rhythm map: ", rhythm_map_path)
+	add_child(rhythm_map_scene.instantiate())
+	rhythm_map = get_node("map_%s_fight" % Gamestate.combat_opponent)
+	print(rhythm_map)
+	metronome_path = get_node("map_%s_fight/metronome" % Gamestate.combat_opponent)
+	bpm_timer = get_node("map_%s_fight/bpm_timer" % Gamestate.combat_opponent)
+	bpm = int(get_node("map_%s_fight/bpm" % Gamestate.combat_opponent).get_child(0).get_name())
+
+	# get rhythm map song
+	if !ResourceLoader.exists(rhythm_map_song):
 		audio_fight_music.stream = load("res://audio/null.wav")
 		push_error("ERR NOT FOUND - rhythm map song: " + rhythm_map_song)
+		return
+
+	audio_fight_music.stream = load(rhythm_map_song)
+	print_debug("FOUND - rhythm map song: ", rhythm_map_song)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -101,6 +116,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # process
 func _process(delta: float) -> void:
+	var song_time = get_song_time()
+	sync_rhythm_map()
 	player_current_position = player.position
 	hitcircle_current_position = hitcircle.position
 	rhythm_map_current_position = rhythm_map.position
@@ -110,8 +127,19 @@ func _process(delta: float) -> void:
 	if Gamestate.combat_fight_phase == false:
 		rhythm_hit_indicator_label.add_theme_color_override("font_color", Color("ffffffff"))
 		rhythm_hit_indicator_label.text = ""
+		rhythm_hit_dmg_label.text = ""
+		$spawn_area.monitoring = true
+	elif Gamestate.combat_fight_phase:
+		$spawn_area.monitoring = false
 	if Gamestate.combat_dodge_phase == true:
 		pass
+
+
+func sync_rhythm_map():
+	var song_time = get_song_time()
+	var pixels_per_beat = 100
+	var scroll_speed = (bpm / 60.0) * pixels_per_beat
+	rhythm_map.position.x = rhythm_map_spawn_position.x - scroll_speed * song_time
 
 
 var player_moved = false
@@ -120,12 +148,10 @@ func _physics_process(delta: float) -> void:
 	t += delta * 5
 	var t2: float = 0.0
 	t2 = delta * 250
-	if rhythm_map_start:
-		rhythm_map.position = rhythm_map_current_position.move_toward(rhythm_map_left_position, t2)
+
 	if Gamestate.combat_choice_phase == true:
 		Gamestate.player_can_move = false
 		player.hide()
-		rhythm_map.hide()
 		player_moved = false
 		player.position = player_hide_position
 		tilemap.position = tilemap_hide_position
@@ -133,7 +159,6 @@ func _physics_process(delta: float) -> void:
 
 	elif Gamestate.combat_dodge_phase == true:
 		player.show()
-		rhythm_map.hide()
 		tilemap.position = tilemap_default_position
 		hitcircle.position = hitcircle_hide_position
 		if !player_moved:
@@ -145,14 +170,13 @@ func _physics_process(delta: float) -> void:
 	elif Gamestate.combat_fight_phase == true:
 		Gamestate.player_can_move = false
 		player.hide()
-		rhythm_map.show()
 		player_moved = false
 		player.position = player_hide_position
 		tilemap.position = tilemap_hide_position
 		hitcircle.position = hitcircle_current_position.lerp(hitcircle_default_position, t)
 
-	if rhythm_hit_counter == 5:
-		Gamestate.combat_dodge_phase = true
+	#if rhythm_hit_counter == 5:
+		#Gamestate.combat_dodge_phase = true
 
 
 func start_metronome() -> void:
@@ -166,7 +190,7 @@ func start_metronome() -> void:
 
 # determine score awarded
 func get_hit_score():
-	if Input.is_action_just_pressed("ui_cancel") and rhythm_great == true:
+	if Input.is_action_just_pressed("rhythm_key1") and rhythm_great == true:
 		rhythm_hit_indicator_label.add_theme_color_override("font_color", Color("6fb7ab"))
 		rhythm_hit_indicator_label.text = "perfect!"
 
@@ -177,9 +201,13 @@ func get_hit_score():
 
 		#await get_tree().create_timer(0.8).timeout
 		#rhythm_hit_indicator_label.text = ""
+
 		current_rhythm_circle.play("hit")
 
-	if Input.is_action_just_pressed("ui_cancel") and rhythm_good == true:
+		audio_fight_sfx.stream = load("res://audio/music/hit_sound.wav")
+		audio_fight_sfx.play()
+
+	if Input.is_action_just_pressed("rhythm_key1") and rhythm_good == true:
 		rhythm_hit_indicator_label.add_theme_color_override("font_color", Color("afc168"))
 		rhythm_hit_indicator_label.text = "good!"
 
@@ -191,7 +219,10 @@ func get_hit_score():
 		#rhythm_hit_indicator_label.text = ""
 		current_rhythm_circle.play("hit")
 
-	if Input.is_action_just_pressed("ui_cancel") and rhythm_bad == true:
+		audio_fight_sfx.stream = load("res://audio/music/hit_sound.wav")
+		audio_fight_sfx.play()
+
+	if Input.is_action_just_pressed("rhythm_key1") and rhythm_bad == true:
 		rhythm_hit_indicator_label.add_theme_color_override("font_color", Color("cdb75f"))
 		rhythm_hit_indicator_label.text = "bad..."
 
@@ -203,7 +234,10 @@ func get_hit_score():
 		#rhythm_hit_indicator_label.text = ""
 		current_rhythm_circle.play("hit")
 
-	if Input.is_action_just_pressed("ui_cancel") and rhythm_miss == true:
+		audio_fight_sfx.stream = load("res://audio/music/hit_sound.wav")
+		audio_fight_sfx.play()
+
+	if Input.is_action_just_pressed("rhythm_key1") and rhythm_miss == true:
 		rhythm_hit_indicator_label.add_theme_color_override("font_color", Color("764559"))
 		rhythm_hit_indicator_label.text = "miss."
 
@@ -211,9 +245,19 @@ func get_hit_score():
 		rhythm_dmg_total -= Gamestate.player_damage / 8
 		rhythm_hit_dmg_label.text = str(rhythm_dmg_total)
 		#await get_tree().create_timer(0.8).timeout
-		rhythm_hit_counter += 1
+		#rhythm_hit_counter += 1
+		audio_fight_sfx.stream = load("res://audio/music/miss_sound.wav")
+		audio_fight_sfx.play()
+		anim_hitcircle.play("miss")
 		#rhythm_hit_indicator_label.text = ""
 		#current_rhythm_circle.play("miss")
+
+
+func get_song_time() -> float:
+	var time = audio_fight_music.get_playback_position()
+	time += AudioServer.get_time_since_last_mix()
+	time -= AudioServer.get_output_latency()
+	return time
 
 
 
@@ -245,11 +289,9 @@ func _on_bad_area_entered(area: Area2D) -> void:
 	if area.is_in_group("rhythm_circle"):
 		print(current_rhythm_circle)
 		current_rhythm_circle = area.get_child(1)
+		current_rhythm_circle_miss_area = area.get_parent().get_node("miss_area")
 		rhythm_bad = true
 		rhythm_miss = false
-	if area.is_in_group("miss_window"):
-		current_rhythm_circle = area.get_child(1)
-		rhythm_miss = true
 func _on_bad_area_exited(area: Area2D) -> void:
 	if area.is_in_group("rhythm_circle"):
 		print(current_rhythm_circle)
@@ -257,4 +299,25 @@ func _on_bad_area_exited(area: Area2D) -> void:
 		rhythm_bad = false
 		rhythm_miss = true
 	if area.is_in_group("miss_window"):
-		rhythm_miss = false
+		rhythm_hit_indicator_label.add_theme_color_override("font_color", Color("764559"))
+		rhythm_hit_indicator_label.text = "miss."
+
+		rhythm_hit_dmg_label.add_theme_color_override("font_color", Color("764559"))
+		rhythm_dmg_total -= Gamestate.player_damage / 8
+		rhythm_hit_dmg_label.text = str(rhythm_dmg_total)
+		#await get_tree().create_timer(0.8).timeout
+		#rhythm_hit_counter += 1
+		audio_fight_sfx.stream = load("res://audio/music/miss_sound.wav")
+		audio_fight_sfx.play()
+		anim_hitcircle.play("miss")
+		#rhythm_hit_indicator_label.text = ""
+		#current_rhythm_circle.play("miss")
+		area.get_parent().queue_free()
+
+
+func _on_spawn_area_area_entered(area: Area2D) -> void:
+	var rhythm_circle
+
+	if Gamestate.combat_fight_phase == false and area.is_in_group("rhythm_circle_spawn_window"):
+		rhythm_circle = area.get_parent()
+		rhythm_circle.queue_free()

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cjrcx7huo1wqm"
+path="res://.godot/imported/pip_cave_start.dialogue-4bc9f38beb6526ebab9bc8e8ce826020.tres"
+
+[deps]
+
+source_file="res://script/dialogue/dialogue_lines/pip_cave_start.dialogue"
+dest_files=["res://.godot/imported/pip_cave_start.dialogue-4bc9f38beb6526ebab9bc8e8ce826020.tres"]
+
+[params]
+
+defaults=true

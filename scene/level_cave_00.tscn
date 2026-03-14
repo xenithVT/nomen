@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b4inxib4ohpma" path="res://scene/level_cave_00.gd" id="1_q6125"]
 [ext_resource type="Texture2D" uid="uid://bpkby8o2jcded" path="res://art/tileset/cave/cave_walls.png" id="2_q6125"]
 [ext_resource type="Texture2D" uid="uid://cwnq1n4ax6ebi" path="res://art/tileset/combat_walls.png" id="3_d56da"]
-[ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player.tscn" id="3_qrdce"]
+[ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player/player.tscn" id="3_qrdce"]
 [ext_resource type="Script" uid="uid://dx60irmkvmjki" path="res://script/scene_transition.gd" id="5_d56da"]
 [ext_resource type="Texture2D" uid="uid://5ljnpw08155g" path="res://art/sprite/sprite_butterfly.png" id="8_kxip3"]
 
@@ -224,7 +224,6 @@ tile_map_data = PackedByteArray("AAD///j/AgACAAAAAAD+//f/AQADAAIAAAD///f/AQADAAI
 tile_set = SubResource("TileSet_kxip3")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="level" unique_id=136328112]
-visible = false
 color = Color(0.06620528, 0.07355177, 0.084571056, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="level" unique_id=464794273]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://jutvgp58f0ds"
+path="res://.godot/imported/cave_torin_start.dialogue-b6619049e98221120655108f3a8b8394.tres"
+
+[deps]
+
+source_file="res://script/dialogue/dialogue_lines/cave_torin_start.dialogue"
+dest_files=["res://.godot/imported/cave_torin_start.dialogue-b6619049e98221120655108f3a8b8394.tres"]
+
+[params]
+
+defaults=true

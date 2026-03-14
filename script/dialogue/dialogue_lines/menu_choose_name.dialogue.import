@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3vnb12fg1m6t"
+path="res://.godot/imported/menu_choose_name.dialogue-9205c4076425619e2a29a0f3fa723925.tres"
+
+[deps]
+
+source_file="res://script/dialogue/dialogue_lines/menu_choose_name.dialogue"
+dest_files=["res://.godot/imported/menu_choose_name.dialogue-9205c4076425619e2a29a0f3fa723925.tres"]
+
+[params]
+
+defaults=true

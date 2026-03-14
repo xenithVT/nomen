@@ -51,7 +51,7 @@ radius = 15.0
 radius = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5h52y"]
-size = Vector2(70.625, 191)
+size = Vector2(119.25, 191)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5h52y"]
 texture = ExtResource("2_q28wb")
@@ -117,7 +117,7 @@ script = ExtResource("1_8fdq7")
 position = Vector2(320, -64)
 
 [node name="map_torin_fight" parent="." unique_id=2043744703 instance=ExtResource("2_5h52y")]
-position = Vector2(0, 96)
+position = Vector2(0, -200)
 
 [node name="floor" type="TileMapLayer" parent="." unique_id=775259013]
 position = Vector2(10, -144)
@@ -155,9 +155,8 @@ debug_color = Color(0.9286257, 0.27530095, 0.052972242, 0.41960785)
 position = Vector2(320, 97)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area" unique_id=1129291313]
-position = Vector2(285.3125, -1)
+position = Vector2(261, -1)
 shape = SubResource("RectangleShape2D_5h52y")
-debug_color = Color(0.96948165, 0.114089034, 0.28765532, 0.011764706)
 
 [node name="combat_ui" parent="." unique_id=786580201 instance=ExtResource("4_5h52y")]
 
@@ -188,4 +187,3 @@ libraries/ = SubResource("AnimationLibrary_rl45q")
 [connection signal="area_exited" from="hitcircle/good" to="." method="_on_good_area_exited"]
 [connection signal="area_entered" from="hitcircle/bad" to="." method="_on_bad_area_entered"]
 [connection signal="area_exited" from="hitcircle/bad" to="." method="_on_bad_area_exited"]
-[connection signal="area_entered" from="spawn_area" to="." method="_on_spawn_area_area_entered"]

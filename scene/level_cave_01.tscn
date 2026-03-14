@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://chi2jrix7bh0y"]
 
-[ext_resource type="PackedScene" uid="uid://bqpldm5itlnwe" path="res://node/character_pip.tscn" id="1_aq87d"]
+[ext_resource type="PackedScene" uid="uid://bqpldm5itlnwe" path="res://node/character/character_pip.tscn" id="1_aq87d"]
 [ext_resource type="Script" uid="uid://u2aoo4lhrxyh" path="res://scene/level_cave_01.gd" id="1_vqjn6"]
-[ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player.tscn" id="1_xuawd"]
+[ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player/player.tscn" id="1_xuawd"]
 [ext_resource type="Texture2D" uid="uid://dvsyf5wrr4mjl" path="res://art/tileset/cave/cave_floor.png" id="1_y86i1"]
 [ext_resource type="Texture2D" uid="uid://bpkby8o2jcded" path="res://art/tileset/cave/cave_walls.png" id="2_cg5eu"]
 [ext_resource type="Texture2D" uid="uid://cwnq1n4ax6ebi" path="res://art/tileset/combat_walls.png" id="3_4g3dg"]
-[ext_resource type="PackedScene" uid="uid://blas12kjp55u2" path="res://node/character_torin.tscn" id="5_2u4cx"]
+[ext_resource type="PackedScene" uid="uid://blas12kjp55u2" path="res://node/character/character_torin.tscn" id="5_2u4cx"]
 [ext_resource type="Script" uid="uid://dx60irmkvmjki" path="res://script/scene_transition.gd" id="7_epbio"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csnc5"]
@@ -202,7 +202,6 @@ tile_map_data = PackedByteArray("AAD4/wUAAgACAAMAAAD5/wUAAgACAAMAAAD7/wUAAgACAAM
 tile_set = SubResource("TileSet_aq87d")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="level" unique_id=1867175045]
-visible = false
 color = Color(0.23314923, 0.24972269, 0.27734324, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="level" unique_id=1835173287]
@@ -215,12 +214,12 @@ y_sort_enabled = true
 position = Vector2(-69, -19)
 
 [node name="character_torin" parent="Node2D" unique_id=1685215091 instance=ExtResource("5_2u4cx")]
-position = Vector2(309, -51)
+position = Vector2(212, -49)
 
 [node name="player" parent="Node2D" unique_id=1291397033 instance=ExtResource("1_xuawd")]
 position = Vector2(-110, 68)
 
-[node name="SceneTransition" type="Area2D" parent="." unique_id=1570085728]
+[node name="SceneTransition" type="Area2D" parent="." unique_id=1570085728 groups=["scene_transition"]]
 script = ExtResource("7_epbio")
 next_scene_path = "uid://bjmqrp74frk1e"
 metadata/_custom_type_script = "uid://dx60irmkvmjki"

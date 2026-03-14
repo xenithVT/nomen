@@ -6,7 +6,7 @@ extends Node2D
 @onready var container_button = $CanvasLayer/MarginContainer/MarginContainer2/Control/container_button
 @onready var audio_stream_player = $AudioStreamPlayer
 
-var dialogue_file = preload("res://script/dialogue/menu_choose_name.dialogue")
+var dialogue_file = preload("res://script/dialogue/dialogue_lines/menu_choose_name.dialogue")
 @onready var dialogue_balloon = $CanvasLayer/MarginContainer/MarginContainer2/Control/container_button/dialogue_balloon_menu
 var dialogue_jump
 
@@ -25,11 +25,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
-
-
-func _input(event):
-	if name_line.has_focus() and event.is_action_pressed("ui_cancel"):
-		get_viewport().set_input_as_handled()
 
 
 func _on_line_edit_text_submitted(new_text: String) -> void:

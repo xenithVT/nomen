@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://c8o06hxyvl5d7"]
+
+[ext_resource type="PackedScene" uid="uid://dxb48tyy2dthn" path="res://node/character/rhythm_circle_node.tscn" id="1_8pjcq"]
+[ext_resource type="AudioStream" uid="uid://d3ybeef2mveby" path="res://audio/combat/metronome.wav" id="2_anis1"]
+[ext_resource type="AudioStream" uid="uid://ckdjxky5tff2t" path="res://audio/music/fight/fight_torin.wav" id="2_gvd80"]
+
+[node name="map_torin_fight" type="Node2D" unique_id=2043744703]
+
+[node name="bpm" type="Node2D" parent="." unique_id=1435095597]
+
+[node name="180" type="Node2D" parent="bpm" unique_id=1780548863]
+
+[node name="all_rhythm_circles" type="Node2D" parent="." unique_id=2079594774]
+position = Vector2(640, 0)
+
+[node name="rhythm_circle" parent="all_rhythm_circles" unique_id=443032255 instance=ExtResource("1_8pjcq")]
+position = Vector2(39, 0)
+
+[node name="rhythm_circle2" parent="all_rhythm_circles" unique_id=1318940917 instance=ExtResource("1_8pjcq")]
+position = Vector2(288, 0)
+
+[node name="rhythm_circle3" parent="all_rhythm_circles" unique_id=921401543 instance=ExtResource("1_8pjcq")]
+position = Vector2(408, 0)
+
+[node name="rhythm_circle4" parent="all_rhythm_circles" unique_id=1478017832 instance=ExtResource("1_8pjcq")]
+position = Vector2(528, 0)
+
+[node name="rhythm_circle5" parent="all_rhythm_circles" unique_id=127927961 instance=ExtResource("1_8pjcq")]
+position = Vector2(615, 0)
+
+[node name="rhythm_circle6" parent="all_rhythm_circles" unique_id=1130145362 instance=ExtResource("1_8pjcq")]
+position = Vector2(864, 0)
+
+[node name="rhythm_circle7" parent="all_rhythm_circles" unique_id=756363370 instance=ExtResource("1_8pjcq")]
+position = Vector2(984, 0)
+
+[node name="rhythm_circle8" parent="all_rhythm_circles" unique_id=218274471 instance=ExtResource("1_8pjcq")]
+position = Vector2(1104, 0)
+
+[node name="rhythm_circle9" parent="all_rhythm_circles" unique_id=1916459295 instance=ExtResource("1_8pjcq")]
+position = Vector2(1215, 0)
+
+[node name="rhythm_circle10" parent="all_rhythm_circles" unique_id=152881206 instance=ExtResource("1_8pjcq")]
+position = Vector2(1464, 0)
+
+[node name="rhythm_circle11" parent="all_rhythm_circles" unique_id=573487245 instance=ExtResource("1_8pjcq")]
+position = Vector2(1584, 0)
+
+[node name="rhythm_circle12" parent="all_rhythm_circles" unique_id=1834742946 instance=ExtResource("1_8pjcq")]
+position = Vector2(1704, 0)
+
+[node name="rhythm_circle13" parent="all_rhythm_circles" unique_id=1338886826 instance=ExtResource("1_8pjcq")]
+position = Vector2(1791, 0)
+
+[node name="rhythm_circle14" parent="all_rhythm_circles" unique_id=1490622332 instance=ExtResource("1_8pjcq")]
+position = Vector2(2040, 0)
+
+[node name="rhythm_circle15" parent="all_rhythm_circles" unique_id=979906263 instance=ExtResource("1_8pjcq")]
+position = Vector2(2160, 0)
+
+[node name="rhythm_circle16" parent="all_rhythm_circles" unique_id=2142343382 instance=ExtResource("1_8pjcq")]
+position = Vector2(2280, 0)
+
+[node name="rhythm_circle17" parent="all_rhythm_circles" unique_id=126721405 instance=ExtResource("1_8pjcq")]
+position = Vector2(2375, 0)
+
+[node name="rhythm_circle18" parent="all_rhythm_circles" unique_id=780895664 instance=ExtResource("1_8pjcq")]
+position = Vector2(2624, 0)
+
+[node name="rhythm_circle19" parent="all_rhythm_circles" unique_id=688778440 instance=ExtResource("1_8pjcq")]
+position = Vector2(2744, 0)
+
+[node name="rhythm_circle20" parent="all_rhythm_circles" unique_id=40242499 instance=ExtResource("1_8pjcq")]
+position = Vector2(2864, 0)
+
+[node name="rhythm_circle21" parent="all_rhythm_circles" unique_id=1170468134 instance=ExtResource("1_8pjcq")]
+position = Vector2(2951, 0)
+
+[node name="rhythm_circle22" parent="all_rhythm_circles" unique_id=2111607526 instance=ExtResource("1_8pjcq")]
+position = Vector2(3200, 0)
+
+[node name="rhythm_circle23" parent="all_rhythm_circles" unique_id=2067850128 instance=ExtResource("1_8pjcq")]
+position = Vector2(3320, 0)
+
+[node name="rhythm_circle24" parent="all_rhythm_circles" unique_id=1842351547 instance=ExtResource("1_8pjcq")]
+position = Vector2(3440, 0)
+
+[node name="rhythm_circle25" parent="all_rhythm_circles" unique_id=1044784072 instance=ExtResource("1_8pjcq")]
+position = Vector2(3591, 0)
+
+[node name="rhythm_circle26" parent="all_rhythm_circles" unique_id=1527467415 instance=ExtResource("1_8pjcq")]
+position = Vector2(3840, 0)
+
+[node name="rhythm_circle27" parent="all_rhythm_circles" unique_id=721524459 instance=ExtResource("1_8pjcq")]
+position = Vector2(3960, 0)
+
+[node name="rhythm_circle28" parent="all_rhythm_circles" unique_id=1882622514 instance=ExtResource("1_8pjcq")]
+position = Vector2(4080, 0)
+
+[node name="rhythm_circle29" parent="all_rhythm_circles" unique_id=480413574 instance=ExtResource("1_8pjcq")]
+position = Vector2(4167, 0)
+
+[node name="rhythm_circle30" parent="all_rhythm_circles" unique_id=181774392 instance=ExtResource("1_8pjcq")]
+position = Vector2(4416, 0)
+
+[node name="rhythm_circle31" parent="all_rhythm_circles" unique_id=664341213 instance=ExtResource("1_8pjcq")]
+position = Vector2(4536, 0)
+
+[node name="rhythm_circle32" parent="all_rhythm_circles" unique_id=1073348181 instance=ExtResource("1_8pjcq")]
+position = Vector2(4656, 0)
+
+[node name="rhythm_circle33" parent="all_rhythm_circles" unique_id=1613910680 instance=ExtResource("1_8pjcq")]
+position = Vector2(4767, 0)
+
+[node name="rhythm_circle34" parent="all_rhythm_circles" unique_id=676260954 instance=ExtResource("1_8pjcq")]
+position = Vector2(5016, 0)
+
+[node name="rhythm_circle35" parent="all_rhythm_circles" unique_id=307185773 instance=ExtResource("1_8pjcq")]
+position = Vector2(5136, 0)
+
+[node name="rhythm_circle36" parent="all_rhythm_circles" unique_id=1212125403 instance=ExtResource("1_8pjcq")]
+position = Vector2(5256, 0)
+
+[node name="rhythm_circle37" parent="all_rhythm_circles" unique_id=524478379 instance=ExtResource("1_8pjcq")]
+position = Vector2(5343, 0)
+
+[node name="rhythm_circle38" parent="all_rhythm_circles" unique_id=619634458 instance=ExtResource("1_8pjcq")]
+position = Vector2(5592, 0)
+
+[node name="rhythm_circle39" parent="all_rhythm_circles" unique_id=501862553 instance=ExtResource("1_8pjcq")]
+position = Vector2(5712, 0)
+
+[node name="rhythm_circle40" parent="all_rhythm_circles" unique_id=685614618 instance=ExtResource("1_8pjcq")]
+position = Vector2(5832, 0)
+
+[node name="rhythm_circle41" parent="all_rhythm_circles" unique_id=1387588393 instance=ExtResource("1_8pjcq")]
+position = Vector2(5927, 0)
+
+[node name="rhythm_circle42" parent="all_rhythm_circles" unique_id=1014634704 instance=ExtResource("1_8pjcq")]
+position = Vector2(6176, 0)
+
+[node name="rhythm_circle43" parent="all_rhythm_circles" unique_id=1455998458 instance=ExtResource("1_8pjcq")]
+position = Vector2(6296, 0)
+
+[node name="rhythm_circle44" parent="all_rhythm_circles" unique_id=1751843741 instance=ExtResource("1_8pjcq")]
+position = Vector2(6416, 0)
+
+[node name="rhythm_circle45" parent="all_rhythm_circles" unique_id=1566119576 instance=ExtResource("1_8pjcq")]
+position = Vector2(6503, 0)
+
+[node name="rhythm_circle46" parent="all_rhythm_circles" unique_id=152328690 instance=ExtResource("1_8pjcq")]
+position = Vector2(6752, 0)
+
+[node name="rhythm_circle47" parent="all_rhythm_circles" unique_id=936333164 instance=ExtResource("1_8pjcq")]
+position = Vector2(6872, 0)
+
+[node name="rhythm_circle48" parent="all_rhythm_circles" unique_id=824339517 instance=ExtResource("1_8pjcq")]
+position = Vector2(6992, 0)
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1349638168]
+stream = ExtResource("2_gvd80")
+volume_db = -16.0
+
+[node name="metronome" type="AudioStreamPlayer" parent="." unique_id=1772072626]
+stream = ExtResource("2_anis1")
+volume_db = -8.0
+max_polyphony = 4
+
+[node name="bpm_timer" type="Timer" parent="." unique_id=1462979588]
+wait_time = 0.333

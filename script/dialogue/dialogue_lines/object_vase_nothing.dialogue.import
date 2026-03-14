@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c3o4ngkav5m2s"
+path="res://.godot/imported/object_vase_nothing.dialogue-8087bbfe778ea66d97c867da4f005179.tres"
+
+[deps]
+
+source_file="res://script/dialogue/dialogue_lines/object_vase_nothing.dialogue"
+dest_files=["res://.godot/imported/object_vase_nothing.dialogue-8087bbfe778ea66d97c867da4f005179.tres"]
+
+[params]
+
+defaults=true
