@@ -1,23 +1,37 @@
 extends Node2D
+class_name RhythmNote
+
+signal missed(note)
+var hit_time: float
+var scroll_speed: float
+var hitcircle_position: float
+var hit = false
+var miss_sent = false
+
+var song_player: AudioStreamPlayer
+@onready var anim = $circle_body/AnimationPlayer
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass  # Replace with function body.
+	add_to_group("rhythm_note")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if hit or miss_sent:
+		return
+	if song_player == null:
+		return
+	var song_time = get_song_time()
+	var time_until_hit = hit_time - song_time
+	position.x = hitcircle_position + time_until_hit * scroll_speed
+	if song_time > hit_time + 0.2:
+		miss_sent = true
+		missed.emit(self)
 
-#func _on_spawn_area_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("spawn_area"):
-	#	self.hide()
-	#	$circle_body/miss_area.monitoring = false
-	#	$circle_body/circle_area.monitoring = false
-	#	$circle_body/circle_area.monitorable = false
-	#if area.is_in_group("spawn_area") and area.is_in_group("spawn_area"):
-	#	self.hide()
-	#	$circle_body/miss_area.monitoring = false
-	#	$circle_body/circle_area.monitoring = false
-	#	$circle_body/circle_area.monitorable = false
+
+func get_song_time():
+
+	var time = song_player.get_playback_position()
+	time += AudioServer.get_time_since_last_mix()
+	time -= AudioServer.get_output_latency()
+	return time

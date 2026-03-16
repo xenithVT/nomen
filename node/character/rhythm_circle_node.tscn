@@ -6,6 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnh3u"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1frn"]
+size = Vector2(18, 194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjwg"]
+size = Vector2(330, 194)
+
 [sub_resource type="Animation" id="Animation_ejlui"]
 length = 0.001
 tracks/0/type = "value"
@@ -118,14 +124,8 @@ _data = {
 &"miss": SubResource("Animation_syukm")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1frn"]
-size = Vector2(18, 194)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcjwg"]
-size = Vector2(330, 194)
-
-[node name="rhythm_circle" type="Node2D" unique_id=443032255]
-position = Vector2(960, 96)
+[node name="rhythm_circle" type="Node2D" unique_id=443032255 groups=["rhythm_note"]]
+position = Vector2(671, 96)
 script = ExtResource("1_mqvsu")
 
 [node name="circle_body" type="StaticBody2D" parent="." unique_id=1502615499]
@@ -137,33 +137,28 @@ texture = ExtResource("1_m1607")
 [node name="circle_area" type="Area2D" parent="circle_body" unique_id=647635516 groups=["rhythm_circle"]]
 
 [node name="collision" type="CollisionShape2D" parent="circle_body/circle_area" unique_id=1776949766]
+visible = false
 shape = SubResource("CircleShape2D_rnh3u")
 debug_color = Color(0.8154045, 0.0019812542, 0.97707707, 0.41960785)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="circle_body/circle_area" unique_id=976162345]
-root_node = NodePath("../../..")
-libraries/ = SubResource("AnimationLibrary_ejlui")
 
 [node name="miss_area" type="Area2D" parent="circle_body" unique_id=439475392 groups=["miss_window"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circle_body/miss_area" unique_id=1647371162]
+visible = false
 position = Vector2(24, 0)
 shape = SubResource("RectangleShape2D_n1frn")
 debug_color = Color(1, 0.45, 0.56916666, 0.011764706)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="circle_body/miss_area" unique_id=459054509]
-root_node = NodePath("../../..")
-libraries/ = SubResource("AnimationLibrary_ejlui")
-
 [node name="spawn_area" type="Area2D" parent="circle_body" unique_id=1461561611 groups=["rhythm_circle_spawn_window"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="circle_body/spawn_area" unique_id=1737757495]
+visible = false
 position = Vector2(166, 0)
 shape = SubResource("RectangleShape2D_bcjwg")
 debug_color = Color(0.6516541, 0.58792037, 1, 0.011764706)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="circle_body/spawn_area" unique_id=1065088498]
-root_node = NodePath("../../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="circle_body" unique_id=976162345]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_ejlui")
 
 [connection signal="area_entered" from="circle_body/spawn_area" to="." method="_on_spawn_area_area_entered"]

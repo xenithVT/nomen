@@ -75,10 +75,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 150
 theme_override_constants/margin_top = 210
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 150
 theme_override_constants/margin_bottom = 89
+
+[node name="enemy_health" type="Control" parent="Control/margin_labels" unique_id=1784728956]
+layout_mode = 2
+
+[node name="prog_healthbar" type="ProgressBar" parent="Control/margin_labels/enemy_health" unique_id=774931650]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 11.0
+max_value = 5000.0
+value = 5000.0
+
+[node name="enemy_hp" type="Label" parent="Control/margin_labels/enemy_health" unique_id=1207673515]
+layout_mode = 0
+offset_right = 340.0
+offset_bottom = 11.0
+text = "5000"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/margin_labels" unique_id=618817233]
 layout_mode = 2

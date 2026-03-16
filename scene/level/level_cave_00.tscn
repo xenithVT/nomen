@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bjmqrp74frk1e"]
 
 [ext_resource type="Texture2D" uid="uid://dvsyf5wrr4mjl" path="res://art/tileset/cave/cave_floor.png" id="1_lj7nj"]
-[ext_resource type="Script" uid="uid://b4inxib4ohpma" path="res://scene/level_cave_00.gd" id="1_q6125"]
+[ext_resource type="Script" uid="uid://b4inxib4ohpma" path="res://scene/level/level_cave_00.gd" id="1_q6125"]
 [ext_resource type="Texture2D" uid="uid://bpkby8o2jcded" path="res://art/tileset/cave/cave_walls.png" id="2_q6125"]
 [ext_resource type="Texture2D" uid="uid://cwnq1n4ax6ebi" path="res://art/tileset/combat_walls.png" id="3_d56da"]
 [ext_resource type="PackedScene" uid="uid://css518vob80nl" path="res://node/player/player.tscn" id="3_qrdce"]
