@@ -100,7 +100,7 @@ func player_movement(_delta):
 
 func start_combat():
 	if Gamestate.start_combat == true:
-		get_tree().change_scene_to_file("res://scene/combat_scene.tscn")
+		get_tree().change_scene_to_file("res://scene/combat/combat_scene.tscn")
 
 
 func play_anim(_movement):

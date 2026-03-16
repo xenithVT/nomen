@@ -61,7 +61,7 @@ func _on_start_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 	anim_transition.fade_out()
 	await get_tree().create_timer(1.5).timeout
-	get_tree().change_scene_to_file("res://scene/menu_choose_name.tscn")
+	get_tree().change_scene_to_file("res://scene/menu/menu_choose_name.tscn")
 
 
 func _on_load_pressed() -> void:

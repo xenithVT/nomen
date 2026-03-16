@@ -65,7 +65,7 @@ func _on_button_yes_button_down() -> void:
 		audio_stream_player.play()
 		$canvas_transitions.fade_out()
 		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_file("res://scene/level_cave_00.tscn")
+		get_tree().change_scene_to_file("res://scene/level/level_cave_00.tscn")
 	else:
 		dialogue_balloon.start(dialogue_file, "change your name")
 		audio_stream_player.stream = load("res://audio/menu/select_invalid.wav")
